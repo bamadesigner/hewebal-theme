@@ -1,0 +1,64 @@
+//
+// These are the base styles for hewebal.com
+//
+// This site is built on top of the
+// Bootstrap framework so this
+// SASS stylesheet pulls variables
+// from that framework.
+//
+
+// Import our "overwrite Bootstrap" variables
+//@import "_variables";
+
+// Define our colors
+$heweb-red: #7a181f;
+
+// Change primary color
+$brand-primary: $heweb-red;
+
+// Define our fonts
+
+// Change Bootstrap font
+//$font-family-sans-serif: $questrial;
+//$font-family-base: $font-family-sans-serif;
+$font-size-base: 17px;
+$line-height-base: 2;
+
+// Define some settings
+
+// Import Bootstrap
+@import "../../../bootstrap/scss/_bootstrap";
+
+/*body {
+  background: url( '../images/cwp-background-tile.png' ) 0 0 repeat;
+  padding: 20px 0 0 0;
+}*/
+
+a {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+/*.hide-text {
+
+  .text {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    text-indent: -9999px;
+  }
+
+}*/
+
+.container,
+.container-fluid {
+  //max-width: 1170px;
+  //padding-left: 30px;
+  //padding-right: 30px;
+}
