@@ -42,3 +42,24 @@ add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_script( 'hewebal', $theme_dir . '/js/hewebal.js', array( 'jquery', 'modernizr' ), NULL, true );
 
 });
+
+//! Setup login styles
+add_action( 'login_head', function() {
+
+    ?><style type="text/css">
+    body {
+        background: #7A181F;
+    }
+    #login {
+        padding-top: 5%;
+    }
+    #login h1 a {
+        display: block;
+        background: url( "<?php echo get_template_directory_uri(); ?>/images/hewebal-logo-white.svg" ) center bottom no-repeat;
+        background-size: auto 200px;
+        width: 100%;
+        height: 200px;
+    }
+    </style><?php
+
+});
