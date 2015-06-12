@@ -9,4 +9,8 @@ jQuery(document).ready(function($) {
 
     }
 
+    // Make the map fill up the screen
+    var $full_screen_map = jQuery( '.hewebal-map.fullscreen ');
+    $full_screen_map.width( jQuery( window ).width() ).height( jQuery( window ).height() - $full_screen_map.offset().top );
+
 });

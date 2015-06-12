@@ -29,10 +29,12 @@ $line-height-base: 2;
 // Import Bootstrap
 @import "../../../bootstrap/scss/_bootstrap";
 
-/*body {
-  background: url( '../images/cwp-background-tile.png' ) 0 0 repeat;
-  padding: 20px 0 0 0;
-}*/
+html{
+    height: 100%;
+}
+body {
+    min-height: 100%;
+}
 
 a {
   text-decoration: underline;
@@ -61,4 +63,13 @@ img {
   //max-width: 1170px;
   //padding-left: 30px;
   //padding-right: 30px;
+}
+
+.hewebal-map {
+
+    &.fullscreen {
+        width: 100%;
+        min-height: 400px;
+    }
+
 }
