@@ -3,6 +3,11 @@
 // Enable featured images
 add_theme_support( 'post-thumbnails' );
 
+// Register menus
+register_nav_menus( array(
+    'main' => 'Main Menu',
+));
+
 //! @TODO Add image sizes
 /*if ( function_exists( 'add_image_size' ) ) {
     add_image_size( '', 1005, 390, true );
@@ -66,3 +71,17 @@ add_action( 'login_head', function() {
     </style><?php
 
 });
+
+// Run the loop
+function hewebal_run_the_loop() {
+
+    if ( have_posts() ) :
+        while ( have_posts() ) :
+            the_post();
+
+            the_content();
+
+        endwhile;
+    endif;
+
+}

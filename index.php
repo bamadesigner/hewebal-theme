@@ -2,13 +2,6 @@
 
 get_header();
 
-if ( have_posts() ) :
-    while ( have_posts() ) :
-        the_post();
-
-        the_content();
-
-    endwhile;
-endif;
+hewebal_run_the_loop();
 
 get_footer();
