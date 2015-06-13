@@ -72,8 +72,8 @@ add_action( 'login_head', function() {
 
 });
 
-// Run the loop
-function hewebal_run_the_loop() {
+//! Run the loop
+function run_the_hewebal_loop() {
 
     if ( have_posts() ) :
         while ( have_posts() ) :

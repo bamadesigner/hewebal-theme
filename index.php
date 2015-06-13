@@ -2,6 +2,6 @@
 
 get_header();
 
-hewebal_run_the_loop();
+run_the_hewebal_loop();
 
 get_footer();
