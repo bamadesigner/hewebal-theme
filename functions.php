@@ -1,5 +1,8 @@
 <?php
 
+// Enable featured images
+add_theme_support( 'post-thumbnails' );
+
 //! @TODO Add image sizes
 /*if ( function_exists( 'add_image_size' ) ) {
     add_image_size( '', 1005, 390, true );
