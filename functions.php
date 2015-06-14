@@ -85,3 +85,138 @@ function run_the_hewebal_loop() {
     endif;
 
 }
+
+//! Get HEWEBAL schedule data
+function get_hewebal_schedule_data() {
+    global $wpdb;
+
+    // See if we have the data stored in a transient
+    $schedule_transient_name = 'hewebal_schedule_data';
+
+    // If we have cached schedule data...
+    if ( ( $transient_schedule_data = get_transient( $schedule_transient_name ) )
+        && $transient_schedule_data !== false ) {
+
+        // Return the cached schedule data
+        return $transient_schedule_data;
+
+    }
+
+    // These are the custom meta keys
+    $custom_keys = array( 'event_type', 'event_date', 'event_start_hour', 'event_start_minute', 'event_end_hour', 'event_end_minute', 'learning_objectives', 'speakers' );
+
+    // One query to rule them all!
+    $schedule_query = "SELECT posts.*";
+
+        // Join to get the meta value
+        foreach( $custom_keys as $key ) {
+            $schedule_query .= ", {$key}_meta.meta_value AS {$key}";
+        }
+
+    $schedule_query .= " FROM {$wpdb->posts} posts";
+
+        // Join to get the meta value
+        foreach( $custom_keys as $key ) {
+            $schedule_query .= " LEFT JOIN {$wpdb->postmeta} {$key}_meta ON {$key}_meta.post_id = posts.ID AND {$key}_meta.meta_key = '{$key}'";
+        }
+
+    $schedule_query .= " WHERE posts.post_type = 'schedule' AND posts.post_status = 'publish'
+        ORDER BY event_date_meta.meta_value ASC, LENGTH( event_start_hour_meta.meta_value ) ASC, event_start_hour_meta.meta_value ASC, event_start_minute_meta.meta_value ASC, LENGTH( event_end_hour_meta.meta_value ) ASC, event_end_hour_meta.meta_value ASC, event_end_minute_meta.meta_value ASC";
+
+    // Store the data
+    if ( $schedule_data = $wpdb->get_results( $schedule_query ) ) {
+
+        // Sort by DateTime
+        $schedule_sorted_by_dt = array();
+
+        foreach( $schedule_data as &$schedule_item ) {
+
+            // Create the DateTime stamp
+            $dt_timestamp = NULL;
+
+            // Add time
+            if ( $schedule_item->event_start_hour ) {
+
+                // Add start hour
+                $dt_timestamp .= $schedule_item->event_start_hour;
+
+                // Add start minute
+                if ( $schedule_item->event_start_minute )
+                    $dt_timestamp .= ":{$schedule_item->event_start_minute}";
+
+                // Add end hour
+                if ( $schedule_item->event_end_hour ) {
+
+                    // Add end hour
+                    $dt_timestamp .= " to {$schedule_item->event_end_hour}";
+
+                    // Add end minute
+                    if ( $schedule_item->event_end_minute )
+                        $dt_timestamp .= ":{$schedule_item->event_end_minute}";
+
+                }
+
+            }
+
+            // Store the speaker count
+            $speaker_count = $schedule_item->speakers;
+
+            // Clear out the speakers
+            $schedule_item->speakers = NULL;
+
+            // If this item has speakers...
+            if ( $speaker_count >= 1 ) {
+
+                // Going to now use the speaker area for the info
+                $schedule_item->speakers = array();
+
+                for( $speaker_index = 0; $speaker_index < $speaker_count; $speaker_index++ ) {
+
+                    // Get the data
+                    $speaker_data = $wpdb->get_results( "SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = {$schedule_item->ID} AND meta_key LIKE 'speakers\_{$speaker_index}\_%' " );
+                    if ( $speaker_data ) {
+
+                        // Build all speaker info
+                        $this_speaker_info = (object) array();
+
+                        foreach( $speaker_data as $data ) {
+
+                            // Fix the meta key
+                            $meta_key = preg_replace( '/^speakers\_' . $speaker_index . '\_speaker\_/i', '', $data->meta_key );
+
+                            // Store with other data
+                            $this_speaker_info->{$meta_key} = $data->meta_value;
+
+                        }
+
+                        // Store speaker info
+                        $schedule_item->speakers[] = $this_speaker_info;
+
+                    }
+
+                }
+
+            }
+
+            // Sort by timestamp
+            $schedule_sorted_by_dt[ $schedule_item->event_date ][ $dt_timestamp ][] = $schedule_item;
+
+        }
+
+        // Store for an hour
+        set_transient( $schedule_transient_name, $schedule_sorted_by_dt, 3600 );
+
+        return $schedule_sorted_by_dt;
+
+    }
+
+    return false;
+
+}
+
+//! Flush the schedule whenever an item is saved/updated
+add_action( "save_post_schedule", function( $post_ID, $post, $update ) {
+
+    delete_transient( 'hewebal_schedule_data' );
+
+});
