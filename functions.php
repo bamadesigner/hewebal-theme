@@ -103,7 +103,7 @@ function get_hewebal_schedule_data() {
     }
 
     // These are the custom meta keys
-    $custom_keys = array( 'event_type', 'event_date', 'event_start_hour', 'event_start_minute', 'event_end_hour', 'event_end_minute', 'learning_objectives', 'speakers' );
+    $custom_keys = array( 'event_type', 'event_date', 'event_start_hour', 'event_start_minute', 'event_end_hour', 'event_end_minute', 'event_session_room', 'learning_objectives', 'speakers' );
 
     // One query to rule them all!
     $schedule_query = "SELECT posts.*";
@@ -121,7 +121,7 @@ function get_hewebal_schedule_data() {
         }
 
     $schedule_query .= " WHERE posts.post_type = 'schedule' AND posts.post_status = 'publish'
-        ORDER BY event_date_meta.meta_value ASC, LENGTH( event_start_hour_meta.meta_value ) ASC, event_start_hour_meta.meta_value ASC, event_start_minute_meta.meta_value ASC, LENGTH( event_end_hour_meta.meta_value ) ASC, event_end_hour_meta.meta_value ASC, event_end_minute_meta.meta_value ASC";
+        ORDER BY event_date_meta.meta_value ASC, LENGTH( event_start_hour_meta.meta_value ) ASC, event_start_hour_meta.meta_value ASC, event_start_minute_meta.meta_value ASC, LENGTH( event_end_hour_meta.meta_value ) ASC, event_end_hour_meta.meta_value ASC, event_end_minute_meta.meta_value ASC, event_session_room_meta.meta_value ASC";
 
     // Store the data
     if ( $schedule_data = $wpdb->get_results( $schedule_query ) ) {
@@ -203,8 +203,8 @@ function get_hewebal_schedule_data() {
 
         }
 
-        // Store for an hour
-        set_transient( $schedule_transient_name, $schedule_sorted_by_dt, 3600 );
+        // Store for a week - it updates when any schedule items are updated
+        set_transient( $schedule_transient_name, $schedule_sorted_by_dt, 604800 );
 
         return $schedule_sorted_by_dt;
 
