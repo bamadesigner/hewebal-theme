@@ -17,6 +17,8 @@ $white: #fff;
 
 // Change primary color
 $brand-primary: $heweb-red;
+$link-color: $heweb-red;
+$link-hover-color: darken( $link-color, 15% );
 
 // Define our fonts
 
@@ -117,16 +119,18 @@ $header-left-border-width: 3px;
 
         .hewebal-logo {
             display: block;
+            width: 100%;
             height: $header-height;
             position: absolute;
             right: 0;
             bottom: 0;
+            z-index: 100;
 
             img {
                 width: auto;
                 max-width: none;
-                height: $header-height - 30px;
-                margin: 15px 15px 0 0;
+                height: $header-height - 50px;
+                margin: 25px 0 0 0;
             }
 
         }
@@ -134,9 +138,10 @@ $header-left-border-width: 3px;
     }
 
     .header-right {
-        padding: 0 0 0 ( ( $grid-gutter-width / 2 ) + $header-left-width + $header-left-border-width );
+        padding: 0 0 0 $header-left-width;
         height: $header-height;
         position: relative;
+        z-index: 0;
 
         &:before {
             content: '';
@@ -146,6 +151,72 @@ $header-left-border-width: 3px;
             top: 0;
             width: 3000px;
             height: $header-height;
+            z-index: -1;
+        }
+
+        .hashtag {
+            display: none;
+            background: darken( $heweb-red, 10% );
+            width: 50px;
+            height: $header-height;
+            overflow: hidden;
+            text-indent: -9999px;
+            border-right: 2px solid darken( $heweb-red, 13% );
+        }
+
+    }
+
+}
+
+.schedule-header {
+    margin: 35px 0 10px 0;
+}
+
+.schedule-table {
+    font-size: 1.1em;
+    line-height: 1.2;
+    border-top: 1px solid rgba( $black, 0.1 );
+    margin: 25px 0;
+
+    .schedule-row {
+        clear: both;
+        overflow: auto;
+        border-bottom: 1px solid rgba( $black, 0.1 );
+        padding: 15px 0;
+
+        .schedule-item {
+            float: left;
+
+            &.time {
+                width: 15%;
+                font-size: 0.85em;
+                padding: 0 10px 0 0;
+            }
+
+            &.event {
+                width: 85%;
+                padding: 0 0 0 10px;
+                overflow: auto;
+
+                .session {
+                    float: left;
+                    width: 50%;
+                    padding: 0 13px 0 0;
+
+                    & + .session {
+                        padding: 0 0 0 13px;
+                    }
+
+                }
+
+                .session-header {
+                    font-size: 1em;
+                    line-height: 1.4;
+                    margin: 0;
+                }
+
+            }
+
         }
 
     }

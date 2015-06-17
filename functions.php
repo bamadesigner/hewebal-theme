@@ -103,7 +103,7 @@ function get_hewebal_schedule_data() {
         && $transient_schedule_data !== false ) {
 
         // Return the cached schedule data
-        return $transient_schedule_data;
+        //return $transient_schedule_data;
 
     }
 
@@ -143,7 +143,7 @@ function get_hewebal_schedule_data() {
             if ( $schedule_item->event_start_hour ) {
 
                 // Add start hour
-                $dt_timestamp .= $schedule_item->event_start_hour;
+                $dt_timestamp .= $schedule_item->event_start_hour; // > 12 ? ( $schedule_item->event_start_hour - 12 ) : $schedule_item->event_start_hour;
 
                 // Add start minute
                 if ( $schedule_item->event_start_minute )
@@ -152,12 +152,27 @@ function get_hewebal_schedule_data() {
                 // Add end hour
                 if ( $schedule_item->event_end_hour ) {
 
+                    /*// If start meridian is different from end meridian
+                    if ( $schedule_item->event_end_hour != $schedule_item->event_start_hour ) {
+
+                        if ( $schedule_item->event_start_hour < 12 && $schedule_item->event_end_hour >= 12 )
+                            $dt_timestamp .= " a.m.";
+
+                    }*/
+
                     // Add end hour
-                    $dt_timestamp .= " to {$schedule_item->event_end_hour}";
+                    $dt_timestamp .= "-{$schedule_item->event_end_hour}";
+                    //$dt_timestamp .= " to " . ( $schedule_item->event_end_hour > 12 ? ( $schedule_item->event_end_hour - 12 ) : $schedule_item->event_end_hour );
 
                     // Add end minute
                     if ( $schedule_item->event_end_minute )
                         $dt_timestamp .= ":{$schedule_item->event_end_minute}";
+
+                    /*// Add end meridian
+                    if ( $schedule_item->event_end_hour < 12 )
+                        $dt_timestamp .= " a.m.";
+                    else if ( $schedule_item->event_end_hour >= 12 )
+                        $dt_timestamp .= " p.m.";*/
 
                 }
 
