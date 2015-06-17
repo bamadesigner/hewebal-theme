@@ -17,4 +17,30 @@
     <![endif]-->
 
 </head>
-<body>
+<body <?php body_class(); ?>>
+    <a href="#" id="skip-to-content">Skip to Content</a>
+
+    <div id="hewebal-wrapper">
+
+        <div id="hewebal-header">
+            <div class="container-fluid">
+
+                    <div class="header-left">
+                        <div class="header-left-inside">
+                            <a class="hewebal-logo" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/hewebal-logo-white.svg" /></a>
+                        </div>
+                    </div>
+                    <div class="header-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras risus urna, ullamcorper in ullamcorper in, dapibus vel leo. Nam diam odio, aliquam quis accumsan a, viverra non sem. Pellentesque non fringilla sapien.</div>
+
+            </div>
+        </div> <!-- #hewebal-header -->
+
+        <div id="hewebal-main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">.col-md-4</div>
+                    <div class="col-md-4">.col-md-4</div>
+                    <div class="col-md-4">.col-md-4</div>
+                </div>
+            </div>
+        </div> <!-- #hewebal-main -->

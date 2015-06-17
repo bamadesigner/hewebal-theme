@@ -8,10 +8,12 @@
 //
 
 // Import our "overwrite Bootstrap" variables
-//@import "_variables";
+@import "../../../bootstrap/scss/bootstrap/_variables";
 
 // Define our colors
 $heweb-red: #7a181f;
+$black: #000;
+$white: #fff;
 
 // Change primary color
 $brand-primary: $heweb-red;
@@ -31,9 +33,17 @@ $line-height-base: 2;
 
 html{
     height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 body {
     min-height: 100%;
+}
+
+// Set the width
+.container,
+.container-fluid {
+    max-width: 1170px;
 }
 
 a {
@@ -46,23 +56,100 @@ img {
   margin: 0;
 }
 
-/*.hide-text {
-
-  .text {
+#skip-to-content {
     display: block;
+    position: fixed;
+    left: -1000px;
+    top: -1000px;
     width: 0;
     height: 0;
+    text-align: left;
     overflow: hidden;
-    text-indent: -9999px;
-  }
+    z-index: 1000000;
+}
 
-}*/
+#hewebal-wrapper {
+}
 
-.container,
-.container-fluid {
-  //max-width: 1170px;
-  //padding-left: 30px;
-  //padding-right: 30px;
+$header-height: 200px;
+$header-left-width: 189px;
+$header-left-border-width: 3px;
+#hewebal-header {
+    background: $heweb-red;
+    height: $header-height;
+    
+    .container-fluid {
+        position: relative;
+    }
+
+    .header-left {
+        position: absolute;
+        left: ( $grid-gutter-width / 2 );
+        top: 0;
+        width: $header-left-width;
+        height: $header-height;
+        padding: 0;
+        border-right: 2px solid $white;
+
+        &:before {
+            content: '';
+            background: url( '../images/russell-hall-header.jpg' ) right center repeat-x;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 2000px;
+            height: $header-height;
+        }
+
+        .header-left-inside {
+
+            &:before {
+                content: '';
+                background: rgba( $black, 0.5 );
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 2000px;
+                height: $header-height;
+            }
+
+        }
+
+        .hewebal-logo {
+            display: block;
+            height: $header-height;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            img {
+                width: auto;
+                max-width: none;
+                height: $header-height - 30px;
+                margin: 15px 15px 0 0;
+            }
+
+        }
+
+    }
+
+    .header-right {
+        padding: 0 0 0 ( ( $grid-gutter-width / 2 ) + $header-left-width + $header-left-border-width );
+        height: $header-height;
+        position: relative;
+
+        &:before {
+            content: '';
+            background: $heweb-red;
+            position: absolute;
+            left: $header-left-width;
+            top: 0;
+            width: 3000px;
+            height: $header-height;
+        }
+
+    }
+
 }
 
 .hewebal-map {

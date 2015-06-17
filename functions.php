@@ -51,6 +51,11 @@ add_action( 'wp_enqueue_scripts', function() {
 
 });
 
+//! Hide Query Monitor
+add_filter( 'qm/process', function( $show_qm, $is_admin_bar_showing ) {
+    return $is_admin_bar_showing;
+});
+
 //! Setup login styles
 add_action( 'login_head', function() {
 
