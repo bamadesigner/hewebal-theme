@@ -7,9 +7,6 @@
 // from that framework.
 //
 
-// Import our "overwrite Bootstrap" variables
-@import "../../../bootstrap/scss/bootstrap/_variables";
-
 // Define our colors
 $heweb-red: #7a181f;
 $black: #000;
@@ -28,7 +25,8 @@ $link-hover-color: darken( $link-color, 15% );
 $font-size-base: 17px;
 $line-height-base: 2;
 
-// Define some settings
+// Import our "overwrite Bootstrap" variables
+@import "../../../bootstrap/scss/bootstrap/_variables";
 
 // Import Bootstrap
 @import "../../../bootstrap/scss/_bootstrap";
@@ -168,6 +166,10 @@ $header-left-border-width: 3px;
 
 }
 
+#hewebal-main {
+    padding: 0 0 40px 0;
+}
+
 .schedule-header {
     margin: 35px 0 10px 0;
 }
@@ -223,11 +225,56 @@ $header-left-border-width: 3px;
 
 }
 
-.hewebal-map {
+// Tweak the map page
+body.page-template-map-php {
 
-    &.fullscreen {
-        width: 100%;
-        min-height: 400px;
+    #hewebal-main {
+
+        .container-fluid {
+            max-width: none;
+            padding: 0;
+        }
+
     }
 
+}
+
+.hewebal-map {
+    width: 100%;
+    min-height: 400px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .view-fullscreen {
+        position: absolute;
+        left: 10px;
+        top: 52px;
+        font-size: 0.9em;
+        line-height: 1.6;
+    }
+
+    &.is-fullscreen {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+    }
+
+}
+
+#hewebal-footer {
+    background: #222;
+    min-height: 100px;
 }

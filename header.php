@@ -32,6 +32,34 @@
                     </div>
                     <div class="header-right">
                         <a class="hashtag" href="https://tagboard.com/hewebAL/229349">#hewebAL</a>
+
+                        <nav id="cwp-navbar" class="navbar navbar-default">
+
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">Menu</a>
+                            </div><?php
+
+                            // Print the main menu
+                            wp_nav_menu( array(
+                                'theme_location'    => 'main',
+                                'depth'             => 2,
+                                'container'         => 'div',
+                                'container_class'   => 'collapse navbar-collapse',
+                                'container_id'      => 'bs-example-navbar-collapse-1',
+                                'menu_class'        => 'nav navbar-nav',
+                                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                                'walker'            => new wp_bootstrap_navwalker()
+                            ) );
+
+                        ?></nav>
+
                     </div>
 
             </div>

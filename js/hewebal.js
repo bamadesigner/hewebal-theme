@@ -10,9 +10,28 @@ jQuery(document).ready(function($) {
     }
 
     // Make the map fill up the screen
-    if ( jQuery( '.hewebal-map.fullscreen ').length >= 1 ) {
-        var $full_screen_map = jQuery( '.hewebal-map.fullscreen ' );
-        $full_screen_map.width(jQuery( window ).width() ).height( jQuery( window ).height() - $full_screen_map.offset().top );
+    if ( jQuery( '.hewebal-map ').length >= 1 ) {
+
+		// Set the map
+        var $full_screen_map = jQuery( '.hewebal-map' );
+
+		// Set the width and height
+        $full_screen_map.width( jQuery( window ).width() ).height( jQuery( window ).height() - $full_screen_map.offset().top );
+
+		// When you want to go full screen
+		$full_screen_map.find( '.view-fullscreen' ).on( 'click touchend', function( $event ) {
+			$event.preventDefault();
+
+			// If it's already full screen, undo it
+			if ( $full_screen_map.hasClass( 'is-fullscreen' ) ) {
+				jQuery( this ).html( 'View Fullscreen' );
+				$full_screen_map.removeClass( 'is-fullscreen' ).width( jQuery( window ).width() ).height( jQuery( window ).height() - $full_screen_map.offset().top );
+			} else {
+				jQuery( this ).html( 'Close Fullscreen' );
+				$full_screen_map.addClass( 'is-fullscreen' ).width( jQuery( window ).width() ).height( jQuery( window ).height() );
+			}
+		});
+
     }
 
 });

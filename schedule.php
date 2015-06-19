@@ -4,6 +4,8 @@
 
 get_header();
 
+?><h1>Schedule</h1><?php
+
 // Get the schedule data
 if ( $schedule_data = get_hewebal_schedule_data() ) {
 

@@ -8,6 +8,9 @@ register_nav_menus( array(
     'main' => 'Main Menu',
 ));
 
+// Register Custom Navigation Walker
+get_template_part( 'includes/wp-bootstrap-navwalker' );
+
 //! @TODO Add image sizes
 /*if ( function_exists( 'add_image_size' ) ) {
     add_image_size( '', 1005, 390, true );
@@ -84,6 +87,7 @@ function run_the_hewebal_loop() {
         while ( have_posts() ) :
             the_post();
 
+            ?><h1><?php the_title(); ?></h1><?php
             the_content();
 
         endwhile;
