@@ -46,8 +46,9 @@ add_action( 'wp_enqueue_scripts', function() {
     // Modernizr JS - goes in header
     wp_enqueue_script( 'modernizr', 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js' );
     
-    // Need collapse for the nav bar - goes in footer
-    //wp_enqueue_script( 'bootstrap-collapse', $theme_dir . '/js/bootstrap/collapse.js', array( 'jquery' ), NULL, true );
+    // Need collapse for the nav bar
+    wp_enqueue_script( 'bootstrap-collapse', $theme_dir . '/js/bootstrap/collapse.js', array( 'jquery' ), NULL, true );
+    //wp_enqueue_script( 'bootstrap-dropdown', $theme_dir . '/js/bootstrap/dropdown.js', array( 'jquery' ), NULL, true );
     
     // Enqueue OUR base JS
     wp_enqueue_script( 'hewebal', $theme_dir . '/js/hewebal.js', array( 'jquery', 'modernizr' ), NULL, true );
@@ -112,7 +113,7 @@ function get_hewebal_schedule_data() {
     }
 
     // These are the custom meta keys
-    $custom_keys = array( 'event_type', 'event_date', 'event_start_hour', 'event_start_minute', 'event_end_hour', 'event_end_minute', 'event_session_room', 'learning_objectives', 'speakers' );
+    $custom_keys = array( 'event_type', 'event_location', 'event_date', 'event_start_hour', 'event_start_minute', 'event_end_hour', 'event_end_minute', 'event_session_room', 'learning_objectives', 'speakers' );
 
     // One query to rule them all!
     $schedule_query = "SELECT posts.*";
@@ -172,6 +173,9 @@ function get_hewebal_schedule_data() {
                 $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'end_time' ] = $end_time;
 
             }
+
+            // Store session type
+            $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'event_type' ] = $schedule_item->event_type;
 
             // Store the speaker count
             $speaker_count = $schedule_item->speakers;

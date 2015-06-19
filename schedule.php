@@ -20,7 +20,10 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
             // Print the events
             foreach ( $day as $time_key => $time_block ) {
 
-                ?><div class="schedule-row">
+                // Define event type
+                $row_event_type = strtolower( $time_block[ 'event_type' ] );
+
+                ?><div class="schedule-row <?php echo $row_event_type; ?>">
                     <div class="schedule-item time"><?php
 
                         // Get start time
@@ -68,14 +71,35 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
 
                                         case 'session':
                                         case 'keynote':
-                                            ?><h4 class="session-header"><a
-                                                href="<?php echo get_permalink( $event->ID ); ?>"><?php echo $event->post_title; ?></a>
-                                            </h4><?php
+                                            ?><h4 class="event-header"><a href="<?php echo get_permalink( $event->ID ); ?>"><?php echo $event->post_title; ?></a></h4><?php
                                             break;
 
                                         default:
-                                            echo $event->post_title;
+                                            ?><span class="event-header"><?php echo $event->post_title; ?></span><?php
+
+                                            // Print event location
+                                            if ( ! empty( $event->event_location ) ) {
+                                                ?><span class="event-location"><?php echo $event->event_location; ?></span><?php
+                                            }
+
                                             break;
+
+                                    }
+
+                                    // If it has content...
+                                    if ( ! empty( $event->post_content ) ) {
+
+                                        switch( $event_type ) {
+
+                                            case 'session':
+                                                echo wpautop( wp_trim_words( $event->post_content, 55, '...' ) );
+                                                break;
+
+                                            default:
+                                                echo wpautop( $event->post_content );
+                                                break;
+
+                                        }
 
                                     }
 
@@ -84,7 +108,9 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                             }
                         }
 
-                    ?></div>
+                        ?><div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
                 </div><?php
 
             }
