@@ -103,7 +103,7 @@ function get_hewebal_schedule_data() {
         && $transient_schedule_data !== false ) {
 
         // Return the cached schedule data
-        //return $transient_schedule_data;
+        return $transient_schedule_data;
 
     }
 
@@ -136,45 +136,36 @@ function get_hewebal_schedule_data() {
 
         foreach( $schedule_data as &$schedule_item ) {
 
-            // Create the DateTime stamp
-            $dt_timestamp = NULL;
+            // Store the start time
+            $start_time = NULL;
+            $end_time = NULL;
 
             // Add time
             if ( $schedule_item->event_start_hour ) {
 
-                // Add start hour
-                $dt_timestamp .= $schedule_item->event_start_hour; // > 12 ? ( $schedule_item->event_start_hour - 12 ) : $schedule_item->event_start_hour;
+                // Set start time with start hour
+                $start_time = $schedule_item->event_start_hour; // > 12 ? ( $schedule_item->event_start_hour - 12 ) : $schedule_item->event_start_hour;
 
                 // Add start minute
                 if ( $schedule_item->event_start_minute )
-                    $dt_timestamp .= ":{$schedule_item->event_start_minute}";
+                    $start_time .= ":{$schedule_item->event_start_minute}";
 
-                // Add end hour
+                // Set end time
                 if ( $schedule_item->event_end_hour ) {
 
-                    /*// If start meridian is different from end meridian
-                    if ( $schedule_item->event_end_hour != $schedule_item->event_start_hour ) {
-
-                        if ( $schedule_item->event_start_hour < 12 && $schedule_item->event_end_hour >= 12 )
-                            $dt_timestamp .= " a.m.";
-
-                    }*/
-
                     // Add end hour
-                    $dt_timestamp .= "-{$schedule_item->event_end_hour}";
+                    $end_time = $schedule_item->event_end_hour;
                     //$dt_timestamp .= " to " . ( $schedule_item->event_end_hour > 12 ? ( $schedule_item->event_end_hour - 12 ) : $schedule_item->event_end_hour );
 
                     // Add end minute
                     if ( $schedule_item->event_end_minute )
-                        $dt_timestamp .= ":{$schedule_item->event_end_minute}";
-
-                    /*// Add end meridian
-                    if ( $schedule_item->event_end_hour < 12 )
-                        $dt_timestamp .= " a.m.";
-                    else if ( $schedule_item->event_end_hour >= 12 )
-                        $dt_timestamp .= " p.m.";*/
+                        $end_time .= ":{$schedule_item->event_end_minute}";
 
                 }
+
+                // Store start and end time
+                $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'start_time' ] = $start_time;
+                $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'end_time' ] = $end_time;
 
             }
 
@@ -218,8 +209,8 @@ function get_hewebal_schedule_data() {
 
             }
 
-            // Sort by timestamp
-            $schedule_sorted_by_dt[ $schedule_item->event_date ][ $dt_timestamp ][] = $schedule_item;
+            // Sort by date, then start time
+            $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'events' ][] = $schedule_item;
 
         }
 
