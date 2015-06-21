@@ -42,6 +42,15 @@ body {
     min-height: 100%;
 }
 
+// Hide these elements visibly, but make sure they're still viewable by screen readers
+.screen-reader-text {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
 .clear {
     clear: both;
 }
@@ -177,6 +186,7 @@ $header-left-border-width: 3px;
 }
 
 .schedule-header {
+    font-size: 31px;
     margin: 35px 0 10px 0;
 }
 

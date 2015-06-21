@@ -27,7 +27,10 @@
 
                     <div class="header-left">
                         <div class="header-left-inside">
-                            <a class="hewebal-logo" href="<?php echo get_bloginfo( 'url' ); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/hewebal-logo-white.svg" /></a>
+                            <a class="hewebal-logo" href="<?php echo get_bloginfo( 'url' ); ?>">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/hewebal-logo-white.svg" alt="HighEdWeb Alabama"/>
+                                <span class="screen-reader-text">HighEdWeb Alabama</span>
+                            </a>
                         </div>
                     </div>
                     <div class="header-right">

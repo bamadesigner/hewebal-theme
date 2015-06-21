@@ -14,7 +14,7 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
         // Create the date
         $day_date = new DateTime( $day_key, new DateTimeZone( 'America/Chicago' ) );
 
-        ?><h3 class="schedule-header"><?php echo $day_date->format( 'l, F j' ); ?></h3>
+        ?><h2 class="schedule-header"><?php echo $day_date->format( 'l, F j' ); ?></h2>
         <div class="schedule-table"><?php
 
             // Print the events
@@ -71,7 +71,7 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
 
                                         case 'session':
                                         case 'keynote':
-                                            ?><h4 class="event-header"><a href="<?php echo get_permalink( $event->ID ); ?>"><?php echo $event->post_title; ?></a></h4><?php
+                                            ?><h3 class="event-header"><a href="<?php echo get_permalink( $event->ID ); ?>"><?php echo $event->post_title; ?></a></h3><?php
                                             break;
 
                                         default:
