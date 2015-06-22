@@ -25,45 +25,50 @@
         <div id="hewebal-header">
             <div class="container-fluid">
 
-                    <div class="header-left">
-                        <div class="header-left-inside">
-                            <a class="hewebal-logo" href="<?php echo get_bloginfo( 'url' ); ?>">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/hewebal-logo-white.svg" alt="HighEdWeb Alabama"/>
-                                <span class="screen-reader-text">HighEdWeb Alabama</span>
-                            </a>
+                <div class="header-left">
+                    <div class="header-left-inside">
+                        <a class="hewebal-logo" href="<?php echo get_bloginfo( 'url' ); ?>">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/hewebal-logo-white.svg" alt="HighEdWeb Alabama"/>
+                            <span class="screen-reader-text">HighEdWeb Alabama</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="header-right-bottom-wrapper">
+                        <div class="header-right-bottom">
+                            <strong>What's next?</strong>&nbsp;&nbsp;<a href="#">Creative Agency with Students</a>
                         </div>
                     </div>
-                    <div class="header-right">
-                        <a class="hashtag" href="https://tagboard.com/hewebAL/229349">#hewebAL</a>
+                </div>
 
-                        <nav id="cwp-navbar" class="navbar navbar-default">
+                <nav id="hewebal-navbar" class="navbar navbar-default">
 
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <a class="navbar-brand" href="#">Menu</a>
-                            </div><?php
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Menu</a>
+                    </div><?php
 
-                            // Print the main menu
-                            wp_nav_menu( array(
-                                'theme_location'    => 'main',
-                                'depth'             => 2,
-                                'container'         => 'div',
-                                'container_class'   => 'collapse navbar-collapse',
-                                'container_id'      => 'bs-example-navbar-collapse-1',
-                                'menu_class'        => 'nav navbar-nav',
-                                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                                'walker'            => new wp_bootstrap_navwalker()
-                            ) );
+                    // Print the main menu
+                    wp_nav_menu( array(
+                        'theme_location'    => 'main',
+                        'depth'             => 2,
+                        'container'         => 'div',
+                        'container_class'   => 'collapse navbar-collapse',
+                        'container_id'      => 'bs-example-navbar-collapse-1',
+                        'menu_class'        => 'nav navbar-nav',
+                        //'link_before'       => '<span>',
+                        //'link_after'        => '</span>',
+                        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                        'walker'            => new wp_bootstrap_navwalker()
+                    ) );
 
-                        ?></nav>
-
-                    </div>
+                ?></nav>
 
             </div>
         </div> <!-- #hewebal-header -->

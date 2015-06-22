@@ -40,8 +40,11 @@ add_action( 'wp_enqueue_scripts', function() {
     // Set the theme directory
     $theme_dir = get_stylesheet_directory_uri();
 
+    // Register our font
+    wp_register_style( 'hewebal-fonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,600,300' );
+
     // Enqueue our base stylesheet
-    wp_enqueue_style( 'hewebal', $theme_dir . '/css/style.css', array(), NULL );
+    wp_enqueue_style( 'hewebal', $theme_dir . '/css/style.css', array( 'hewebal-fonts' ), NULL );
     
     // Modernizr JS - goes in header
     wp_enqueue_script( 'modernizr', 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js' );

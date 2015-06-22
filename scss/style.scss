@@ -13,6 +13,7 @@ $heweb-blue: #004991;
 $heweb-light-blue: #c6dbf1;
 $black: #000;
 $white: #fff;
+$footer-bg: #222;
 
 // Change primary color
 $brand-primary: $heweb-red;
@@ -22,8 +23,9 @@ $link-hover-color: darken( $link-color, 15% );
 // Define our fonts
 
 // Change Bootstrap font
-//$font-family-sans-serif: $questrial;
-//$font-family-base: $font-family-sans-serif;
+$open-sans: 'Open Sans', sans-serif;
+$font-family-sans-serif: $open-sans;
+$font-family-base: $font-family-sans-serif;
 $font-size-base: 18px;
 $line-height-base: 1.7;
 
@@ -39,6 +41,7 @@ html{
     overflow-y: scroll;
 }
 body {
+    background: $footer-bg;
     min-height: 100%;
 }
 
@@ -47,6 +50,7 @@ body {
     display: block;
     width: 0;
     height: 0;
+    margin: 0;
     overflow: hidden;
     text-indent: -9999px;
 }
@@ -62,13 +66,14 @@ body {
 }
 
 a {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
-  margin: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
 }
 
 #skip-to-content {
@@ -95,6 +100,7 @@ $header-left-border-width: 3px;
 
     .container-fluid {
         position: relative;
+        padding-right: 0;
     }
 
     .header-left {
@@ -167,22 +173,146 @@ $header-left-border-width: 3px;
             z-index: -1;
         }
 
-        .hashtag {
-            display: none;
-            background: darken( $heweb-red, 10% );
-            width: 50px;
-            height: $header-height;
+        .header-right-bottom-wrapper {
+            display: block;
+            width: 100%;
+            height: 50px;
             overflow: hidden;
-            text-indent: -9999px;
-            border-right: 2px solid darken( $heweb-red, 13% );
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 0 0 0 $header-left-width;
+
+            .header-right-bottom {
+                display: block;
+                height: 50px;
+                background: #2f6ea9;
+                border-top: 2px solid darken( $heweb-red, 10% );
+                color: $white;
+                padding: 0 0 0 20px;
+                line-height: 50px;
+
+                a {
+                    color: $white;
+                }
+
+            }
+
         }
 
     }
 
 }
 
+// When the navbar is open
+@media not all and (max-width: $grid-float-breakpoint) {
+
+    $navbar-side-padding: 18px;
+    #hewebal-navbar {
+        background: none;
+        margin: 0;
+        border: 0;
+        padding: 0 0 0 ( $header-left-width + ( $grid-gutter-width / 2 ) + 15px );
+        width: 100%;
+        height: 150px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 0;
+
+        .navbar-brand {
+            display: block;
+            width: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+
+        .navbar-collapse {
+            margin: 0;
+            padding: 0;
+            height: 100% !important;
+        }
+
+        &.navbar-default {
+
+            .navbar-nav {
+                height: 100%;
+
+                & > li {
+                    text-transform: uppercase;
+                    font-weight: 300;
+                    height: 100%;
+
+                    & > a {
+                        display: block;
+                        height: 100%;
+                        background: none;
+                        color: rgba( $white, 0.9 );
+                        text-decoration: none;
+                        padding: 105px $navbar-side-padding 0 $navbar-side-padding;
+                        position: relative;
+                        z-index: 0;
+
+                        &:hover {
+
+                            &:before {
+                                content: '';
+                                background: darken( $heweb-red, 4% );
+                                position: absolute;
+                                left: 0;
+                                bottom: 0;
+                                width: 100%;
+                                height: 200px;
+                                z-index: -1;
+                            }
+
+                        }
+
+                    }
+
+                    &.active {
+
+                        & > a {
+                            font-weight: 600;
+                            color: $white;
+
+                            &:before {
+                                content: '';
+                                background: darken( $heweb-red, 10% );
+                                position: absolute;
+                                left: 0;
+                                bottom: 0;
+                                width: 100%;
+                                height: 200px;
+                                z-index: -1;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+        
+    }
+
+}
+
 #hewebal-main {
+    background: $white;
     padding: 0 0 40px 0;
+
+    .container-fluid {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
 }
 
 .schedule-header {
@@ -341,8 +471,9 @@ body.page-template-map-php {
 }
 
 #hewebal-footer {
-    background: #222;
+    background: $footer-bg;
     min-height: 100px;
+    border-top: 2px solid #000;
 }
 
 // Small and Larger
