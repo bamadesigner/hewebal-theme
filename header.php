@@ -22,6 +22,24 @@
 
     <div id="hewebal-wrapper">
 
+        <div id="hewebal-banner">
+            <div class="container-fluid">
+
+                <div class="hewebal-twitter">
+                    <span class="hashtag">#hewebAL</span>
+                </div><?php
+
+                // Print the banner menu
+                wp_nav_menu( array(
+                    'theme_location'    => 'banner',
+                    'depth'             => 1,
+                    'container'         => false,
+                    'menu_id'           => 'hewebal-banner-menu'
+                ) );
+
+            ?></div>
+        </div>
+
         <div id="hewebal-header">
             <div class="container-fluid">
 
@@ -73,7 +91,21 @@
             </div>
         </div> <!-- #hewebal-header -->
 
-        <div id="hewebal-main">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
+        <div id="hewebal-main"><?php
+
+            if ( ! is_front_page() ) {
+
+                ?><div class="hewebal-h1">
+                    <div class="container-fluid">
+                        <h1><?php echo get_the_title(); ?></h1>
+                    </div>
+                </div><?php
+
+            }
+
+            ?><div id="hewebal-content">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-md-12">

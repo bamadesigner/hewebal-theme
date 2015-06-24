@@ -5,7 +5,8 @@ add_theme_support( 'post-thumbnails' );
 
 // Register menus
 register_nav_menus( array(
-    'main' => 'Main Menu',
+    'banner'    => 'Banner Menu',
+    'main'      => 'Main Menu',
 ));
 
 // Register Custom Navigation Walker
@@ -91,7 +92,6 @@ function run_the_hewebal_loop() {
         while ( have_posts() ) :
             the_post();
 
-            ?><h1><?php the_title(); ?></h1><?php
             the_content();
 
         endwhile;

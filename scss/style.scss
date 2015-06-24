@@ -93,12 +93,69 @@ img {
 #hewebal-wrapper {
 }
 
+$banner-height: 35px;
+#hewebal-banner {
+    background: $white;
+    overflow: auto;
+    height: $banner-height;
+    
+    .hewebal-twitter {
+        float: left;
+        overflow: auto;
+        background: url( '../images/twitter-bird-black.png' ) left center no-repeat;
+        background-size: auto 18px;
+        padding: 0 0 0 27px;
+        height: $banner-height;
+        line-height: $banner-height;
+
+        .hashtag {
+            line-height: $banner-height;
+            font-size: 1em;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+    }
+
+    ul#hewebal-banner-menu {
+        float: right;
+        list-style: none;
+        overflow: auto;
+        margin: 0;
+
+        li {
+            display: block;
+            float: left;
+            list-style: none;
+            margin: 0 0 0 15px;
+            font-size: 0.75em;
+            line-height: $banner-height;
+            color: rgba( $black, 0.7 );
+
+            a {
+                color: inherit;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                    color: $link-color;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
 $header-height: 200px;
 $header-left-width: 189px;
 $header-left-border-width: 3px;
 #hewebal-header {
     background: $heweb-red;
     height: $header-height;
+    overflow: hidden;
 
     .container-fluid {
         position: relative;
@@ -179,7 +236,7 @@ $header-left-border-width: 3px;
             display: block;
             width: 100%;
             height: 50px;
-            overflow: hidden;
+            overflow: visible;
             position: absolute;
             left: 0;
             bottom: 0;
@@ -188,11 +245,23 @@ $header-left-border-width: 3px;
             .header-right-bottom {
                 display: block;
                 height: 50px;
-                background: #2f6ea9;
-                border-top: 2px solid darken( $heweb-red, 10% );
                 color: $white;
                 padding: 0 0 0 20px;
                 line-height: 50px;
+                position: relative;
+                z-index: 0;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 200%;
+                    height: 100%;
+                    background: #004990;
+                    border-top: 2px solid darken( $heweb-red, 10% );
+                    z-index: -1;
+                }
 
                 a {
                     color: $white;
@@ -309,6 +378,19 @@ $header-left-border-width: 3px;
 #hewebal-main {
     background: $white;
     padding: 0 0 40px 0;
+
+    .hewebal-h1 {
+        background: rgba( $black, 0.05 );
+        padding: 15px 0;
+
+        h1 {
+            font-size: 35px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+    }
+
 }
 
 .graduate-sponsors {
