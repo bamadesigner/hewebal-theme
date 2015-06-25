@@ -487,20 +487,13 @@ body.home {
 
 }
 
-.sponsor-thank-you {
-    text-align: center;
-    font-size: 20px;
-
-    .huge {
-        font-weight: 600;
-        font-size: 24px;
-    }
-
-}
-
 #hewebal-sponsors-footer {
     background: $white;
     text-align: center;
+
+	.screen-reader-text {
+		display: inline-block;
+	}
 
     .hewebal-sponsors-inside {
         background: rgba( $black, 0.05 );
@@ -529,13 +522,26 @@ body.home {
 
 }
 
+.sponsor-thank-you {
+	text-align: center;
+	font-size: 20px;
+	margin: 0 0 30px 0;
+
+	.huge {
+		font-weight: 600;
+		font-size: 24px;
+	}
+
+}
+
 .sponsors {
     text-align: center;
+	margin: 30px 0 0 0;
 
     .sponsor-header {
         text-transform: uppercase;
         margin-bottom: 25px;
-        font-size: 30px;
+        font-size: 25px;
         color: #666;
         font-weight: 300;
     }
@@ -704,12 +710,19 @@ body.page-template-map {
         padding: 0;
     }
 
-    .view-fullscreen {
+    .hewebal-map-buttons {
         position: absolute;
         left: 10px;
         top: 52px;
-        font-size: 0.9em;
-        line-height: 1.6;
+	    width: 100%;
+	    text-align: center;
+
+	    .btn {
+		    font-size: 0.9em;
+		    line-height: 1.6;
+		    text-decoration: none;
+	    }
+
     }
 
     &.is-fullscreen {
