@@ -145,6 +145,17 @@ $banner-height: 35px;
 
     }
 
+	.hewebal-phone {
+		float: left;
+		font-size: 15px;
+		line-height: 35px;
+		padding: 0 10px 0 23px;
+		background: url( '../images/phone-white.png' ) 10px center no-repeat #0f5588;
+		background-size: auto 40%;
+		color: $white;
+		margin: 0 0 0 1px;
+	}
+
     .hewebal-banner-map {
         position: absolute;
         left: $header-left-width + $header-left-border-width + $grid-gutter-width;
@@ -715,6 +726,11 @@ body.page-template-map {
 	.gform_button {
 		width: 97.5% !important;
 	}
+
+}
+
+// Contact info
+.hewebal-contact-info {
 
 }
 

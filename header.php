@@ -40,6 +40,8 @@
                     <a class="hashtag" href="https://tagboard.com/hewebAL/229349">#hewebAL</a>
                 </div>
 
+	            <div class="hewebal-phone">(205) 690-3899</div>
+
                 <div class="hewebal-banner-menu"><?php
 
                     // Print the banner menu
