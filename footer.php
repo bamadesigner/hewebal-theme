@@ -15,11 +15,11 @@
 			    <div class="row">
 				    <div class="col-md-12">
 					    <h2 class="sponsors-header">Our Sponsors</h2>
-					    <a href="http://ua.edu"><img class="sponsor add-border" src="<?php echo $sponsor_images; ?>alabamprimar201.png"/></a>
-					    <a href="http://www.hannonhill.com/"><img class="sponsor" src="<?php echo $sponsor_images; ?>Hannon-Hill.png"/></a>
-					    <a href="http://www.omniupdate.com/"><img class="sponsor" src="<?php echo $sponsor_images; ?>OU-logo_300.png"/></a>
-					    <a href="https://webtide.ua.edu"><img class="sponsor" class="add-border" src="<?php echo $sponsor_images; ?>webtide.png"/></a>
-					    <a href="http://mstnr.me/1QBWNDG"><img class="sponsor mstoner" src="<?php echo $sponsor_images; ?>mStoner-Logo.png"/></a>
+					    <a href="http://ua.edu"><img class="sponsor add-border" src="<?php echo $sponsor_images; ?>alabamprimar201.png" alt="" /><span class="screen-reader-text">The University of Alabama</span></a>
+					    <a href="http://www.hannonhill.com/"><img class="sponsor" src="<?php echo $sponsor_images; ?>Hannon-Hill.png" alt="" /><span class="screen-reader-text">Hannon Hill</span></a>
+					    <a href="http://www.omniupdate.com/"><img class="sponsor" src="<?php echo $sponsor_images; ?>OU-logo_300.png" alt="" /><span class="screen-reader-text">Omni Update</span></a>
+					    <a href="https://webtide.ua.edu"><img class="sponsor" class="add-border" src="<?php echo $sponsor_images; ?>webtide.png" alt="" /><span class="screen-reader-text">WebTide</span></a>
+					    <a href="http://mstnr.me/1QBWNDG"><img class="sponsor mstoner" src="<?php echo $sponsor_images; ?>mStoner-Logo.png" alt="" /><span class="screen-reader-text">mStoner</span></a>
 				    </div>
 			    </div>
 		    </div>
