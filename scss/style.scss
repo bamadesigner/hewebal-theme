@@ -7,9 +7,13 @@
 // from that framework.
 //
 
+
+// When the nav collapses
+$grid-float-breakpoint: 1050px;
+
 // Define our colors
 $heweb-red: #7a181f;
-$heweb-blue: #004991;
+$heweb-blue: #0f5588;
 $heweb-light-blue: #c6dbf1;
 $black: #000;
 $white: #fff;
@@ -97,7 +101,9 @@ img {
     z-index: 1000000;
 }
 
-#hewebal-wrapper {  }
+#hewebal-wrapper {
+	overflow: hidden;
+}
 
 $banner-height: 35px;
 #hewebal-banner {
@@ -128,9 +134,9 @@ $banner-height: 35px;
         .hashtag {
             display: block;
             background: url( '../images/twitter-bird-white.png' ) 5px center no-repeat;
-            background-size: auto 17px;
+            background-size: auto 15px;
             height: $banner-height;
-            padding: 1px 0 0 32px;
+            padding: 1px 0 0 30px;
             line-height: 32px;
             font-size: 1em;
             font-weight: 400;
@@ -150,7 +156,7 @@ $banner-height: 35px;
 		font-size: 15px;
 		line-height: 35px;
 		padding: 0 10px 0 23px;
-		background: url( '../images/phone-white.png' ) 10px center no-repeat #0f5588;
+		background: url( '../images/phone-white.png' ) 10px center no-repeat $heweb-blue;
 		background-size: auto 40%;
 		color: $white;
 		margin: 0 0 0 1px;
@@ -321,15 +327,19 @@ $banner-height: 35px;
 
         }*/
 
+// The navbar
+#hewebal-navbar {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
 // When the navbar is open
 @media not all and (max-width: $grid-float-breakpoint) {
 
     $navbar-side-padding: 18px;
     #hewebal-navbar {
         background: none;
-        margin: 0;
-        border: 0;
-        padding: 0;
         border-radius: 0;
         text-align: center;
 
@@ -416,6 +426,15 @@ $banner-height: 35px;
 
 #hewebal-content {
     padding: 35px 0 40px 0;
+
+	h2 {
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+	}
+
 }
 
 // Tweak the home page
@@ -731,6 +750,50 @@ body.page-template-map {
 
 // Contact info
 .hewebal-contact-info {
+	max-width: 88%;
+	margin: 0 auto 30px auto;
+
+	.hewebal-contact-twitter {
+		background: url( '../images/twitter-bird-blue.png' ) left center no-repeat;
+		background-size: auto 55px;
+		padding: 0 0 0 80px;
+		font-size: 22px;
+		line-height: 1.5;
+
+		.username,
+		.hashtag {
+			display: block;
+			color: $heweb-blue;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+
+		}
+
+	}
+
+	.hewebal-contact-phone {
+		background: url( '../images/phone-blue.png' ) left center no-repeat;
+		background-size: auto 35px;
+		font-size: 35px;
+		line-height: 28px;
+		color: $heweb-blue;
+		padding: 0 0 0 32px;
+		min-height: 35px;
+		margin: 17px 0 0 0;
+	}
+
+	.hewebal-contact-map {
+		background: url( '../images/hewebal-map.png' ) 5px center no-repeat;
+		background-size: auto 45px;
+		min-height: 45px;
+		margin: 30px 0 0 0;
+		padding: 7px 0 0 80px;
+		font-size: 20px;
+		line-height: 1.4;
+	}
 
 }
 
