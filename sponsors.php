@@ -16,7 +16,8 @@ if ( have_posts() ) :
             <h2 class="sponsor-header">Bronze Sponsors</h2>
             <a href="http://www.hannonhill.com/"><img src="<?php echo $sponsor_images; ?>Hannon-Hill-ad.jpg" /></a>
             <a href="http://www.omniupdate.com/"><img src="<?php echo $sponsor_images; ?>OmniUpdate-Program-Ad.png" /></a>
-            <a href="http://ua.edu"><img class="ua-sponsor-logo" src="<?php echo $sponsor_images; ?>univ-of-alabama.png" /></a>
+            <a href="http://ua.edu"><img class="add-border" src="<?php echo $sponsor_images; ?>univ-of-alabama.png" /></a>
+            <a href="https://webtide.ua.edu"><img class="add-border" src="<?php echo $sponsor_images; ?>webtide.png" /></a>
         </div>
 
 	    <div class="sponsors graduate">
