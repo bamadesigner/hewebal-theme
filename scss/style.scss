@@ -26,7 +26,7 @@ $link-hover-color: darken( $link-color, 15% );
 $open-sans: 'Open Sans', sans-serif;
 $font-family-sans-serif: $open-sans;
 $font-family-base: $font-family-sans-serif;
-$font-size-base: 18px;
+$font-size-base: 17px;
 $line-height-base: 1.7;
 
 // Our settings
@@ -107,27 +107,38 @@ $banner-height: 35px;
     
     .hewebal-twitter {
         float: left;
+	    background: $heweb-red;
         height: $banner-height;
-        padding: 0;
+        padding: 0 12px 0 0;
         line-height: $banner-height;
         z-index: 0;
+	    position: relative;
+
+	    &:before {
+		    content: '';
+		    background-color: #7a181f;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    width: 2000px;
+		    height: 100%;
+		    z-index: -1;
+	    }
 
         .hashtag {
             display: block;
-            background: url( '../images/twitter-bird-red.png' ) 5px center no-repeat;
+            background: url( '../images/twitter-bird-white.png' ) 5px center no-repeat;
             background-size: auto 17px;
             height: $banner-height;
             padding: 1px 0 0 32px;
             line-height: 32px;
             font-size: 1em;
             font-weight: 400;
-            color: $heweb-red;
-            opacity: 0.8;
+            color: $white;
             text-decoration: none;
-            opacity: 0.8;
 
             &:hover {
-                opacity: 1;
+	            text-decoration: underline;
             }
 
         }
@@ -235,6 +246,7 @@ $banner-height: 35px;
                 font-size: 18px;
                 line-height: 1.5;
                 font-weight: 300;
+	            padding: 0 0 5px 0;
 
                 span {
                     display: block;
@@ -326,6 +338,7 @@ $banner-height: 35px;
         }
 
         &.navbar-default {
+	        min-height: 0;
 
             .navbar-nav {
                 float: none;
@@ -406,9 +419,11 @@ body.home {
     }
 
     h2 {
-        font-size: 28px;
+        font-size: 26px;
+	    line-height: 1.2;
         text-transform: uppercase;
-        margin: 30px 0 10px 0;
+        margin: 35px 0 10px 0;
+	    color: rgba( $black, 0.6 );
 
         &:first-child {
             margin-top: 0;
@@ -419,6 +434,26 @@ body.home {
         }
 
     }
+
+	.btn {
+		text-decoration: none;
+
+
+		&.btn-default {
+			background: rgba( $black, 0.03 );
+			border-color: #e8e8e8;
+
+			&:hover {
+				background: #e8e8e8;
+			}
+
+		}
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+	}
 
 }
 
