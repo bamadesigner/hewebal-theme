@@ -149,8 +149,10 @@ $banner-height: 35px;
 
 }
 
-$header-height: 200px;
-$header-left-width: 189px;
+$header-height: 180px;
+$header-bottom-height: 50px;
+$header-top-height: $header-height - $header-bottom-height;
+$header-left-width: 168px;
 $header-left-border-width: 3px;
 #hewebal-header {
     background: $heweb-red;
@@ -207,8 +209,8 @@ $header-left-border-width: 3px;
             img {
                 width: auto;
                 max-width: none;
-                height: $header-height - 50px;
-                margin: 25px 0 0 0;
+                height: $header-height - 40px;
+                margin: 20px 0 0 0;
             }
 
         }
@@ -232,10 +234,26 @@ $header-left-border-width: 3px;
             z-index: -1;
         }
 
+        .header-right-top-wrapper {
+            display: block;
+            width: 100%;
+            height: $header-top-height;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 0 0 0 $header-left-width;
+
+            .header-right-top {
+                height: $header-top-height;
+                position: relative;
+            }
+
+        }
+
         .header-right-bottom-wrapper {
             display: block;
             width: 100%;
-            height: 50px;
+            height: $header-bottom-height;
             overflow: visible;
             position: absolute;
             left: 0;
@@ -244,10 +262,10 @@ $header-left-border-width: 3px;
 
             .header-right-bottom {
                 display: block;
-                height: 50px;
+                height: $header-bottom-height;
                 color: $white;
                 padding: 0 0 0 20px;
-                line-height: 50px;
+                line-height: $header-bottom-height;
                 position: relative;
                 z-index: 0;
 
@@ -283,12 +301,11 @@ $header-left-border-width: 3px;
         background: none;
         margin: 0;
         border: 0;
-        padding: 0 0 0 ( $header-left-width + $grid-gutter-width + 15px );
+        padding: 0;
         width: 100%;
-        height: 150px;
         position: absolute;
         left: 0;
-        top: 0;
+        bottom: 10px;
         border-radius: 0;
 
         .navbar-brand {
@@ -304,42 +321,37 @@ $header-left-border-width: 3px;
         .navbar-collapse {
             margin: 0;
             padding: 0;
-            height: 100% !important;
         }
 
         &.navbar-default {
 
             .navbar-nav {
-                height: 100%;
 
                 & > li {
                     text-transform: uppercase;
                     font-weight: 300;
-                    height: 100%;
+                    margin: 0 0 0 5px;
 
                     & > a {
                         display: block;
-                        height: 100%;
                         background: none;
                         color: rgba( $white, 0.9 );
                         text-decoration: none;
-                        padding: 105px $navbar-side-padding 0 $navbar-side-padding;
+                        padding: 10px $navbar-side-padding;
                         position: relative;
                         z-index: 0;
 
                         &:hover {
+                            background: darken( $heweb-red, 4% );
+                        }
 
-                            &:before {
-                                content: '';
-                                background: darken( $heweb-red, 4% );
-                                position: absolute;
-                                left: 0;
-                                bottom: 0;
-                                width: 100%;
-                                height: 200px;
-                                z-index: -1;
-                            }
+                    }
 
+                    &:first-child {
+                        margin-left: 0;
+
+                        a {
+                            padding-left: 20px;
                         }
 
                     }
@@ -347,19 +359,9 @@ $header-left-border-width: 3px;
                     &.active {
 
                         & > a {
+                            background: darken( $heweb-red, 10% );
                             font-weight: 600;
                             color: $white;
-
-                            &:before {
-                                content: '';
-                                background: darken( $heweb-red, 10% );
-                                position: absolute;
-                                left: 0;
-                                bottom: 0;
-                                width: 100%;
-                                height: 200px;
-                                z-index: -1;
-                            }
 
                         }
 
