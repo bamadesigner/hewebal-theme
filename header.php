@@ -40,7 +40,7 @@
                     <a class="hashtag" href="https://tagboard.com/hewebAL/229349">#hewebAL</a>
                 </div>
 
-	            <div class="hewebal-phone">(205) 690-3899</div>
+	            <a class="hewebal-phone" href="tel:+1-205-690-3899">(205) 690-3899</a>
 
                 <div class="hewebal-banner-menu"><?php
 

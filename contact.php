@@ -19,7 +19,7 @@ if ( have_posts() ) :
 		            </div>
 	            </div>
 		        <div class="col-md-6">
-			        <div class="hewebal-contact-phone">(205) 690-3899</div>
+			        <a class="hewebal-contact-phone" href="tel:+1-205-690-3899">(205) 690-3899</a>
 		        </div>
 	        </div>
 		    <div class="row">
