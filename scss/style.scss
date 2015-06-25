@@ -479,10 +479,18 @@ body.home {
 
 	}
 
+	.twitter-timeline-wrapper {
+		margin: 25px 0 0 0;
+	}
+
 	.spotify-wrapper {
 		background: #212020;
 		text-align: center;
 		padding: 15px 0;
+		margin: 15px 0 0 0;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
 	}
 
 }
@@ -876,10 +884,31 @@ body.page-template-map {
 // Small and Larger
 @media not all and (min-width: 0) and (max-width: $screen-xs-max) {
 
+	body.home {
+
+		.twitter-timeline-wrapper,
+		.spotify-wrapper {
+			margin: 25px 0 0 0;
+		}
+
+	}
+
 }
 
 // Medium and Larger
 @media not all and (min-width: 0) and (max-width: $screen-sm-max) {
+
+	body.home {
+
+		.twitter-timeline-wrapper {
+			margin-top: 0;
+		}
+
+		.spotify-wrapper {
+			margin: 10px 0 0 0;
+		}
+
+	}
 
    .schedule-table {
 
