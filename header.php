@@ -26,18 +26,24 @@
             <div class="container-fluid">
 
                 <div class="hewebal-twitter">
-                    <span class="hashtag">#hewebAL</span>
-                </div><?php
+                    <a class="hashtag" href="https://tagboard.com/hewebAL/229349">#hewebAL</a>
+                </div>
 
-                // Print the banner menu
-                wp_nav_menu( array(
-                    'theme_location'    => 'banner',
-                    'depth'             => 1,
-                    'container'         => false,
-                    'menu_id'           => 'hewebal-banner-menu'
-                ) );
+                <div class="hewebal-banner-map"></div>
 
-            ?></div>
+                <div class="hewebal-banner-menu"><?php
+
+                    // Print the banner menu
+                    wp_nav_menu( array(
+                        'theme_location'    => 'banner',
+                        'depth'             => 1,
+                        'container'         => false,
+                        'menu_id'           => 'hewebal-banner-menu'
+                    ) );
+
+                 ?></div>
+
+            </div>
         </div>
 
         <div id="hewebal-header">
@@ -90,7 +96,8 @@
 
                     <div class="header-right-bottom-wrapper">
                         <div class="header-right-bottom">
-                            <strong>What's next?</strong>&nbsp;&nbsp;<a href="#">Creative Agency with Students</a>
+                            <?php /*<strong>What's next?</strong>&nbsp;&nbsp;<a href="#">Creative Agency with Students</a>*/ ?>
+                            Welcome to the 2015 HighEdWeb Alabama Regional Conference!
                         </div>
                     </div>
 
@@ -101,7 +108,7 @@
 
         <div id="hewebal-main"><?php
 
-            if ( ! is_front_page() ) {
+            if ( ! ( is_front_page() || is_page_template( 'map.php' ) ) ) {
 
                 ?><div class="hewebal-h1">
                     <div class="container-fluid">
