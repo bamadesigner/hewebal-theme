@@ -42,7 +42,7 @@ add_action( 'wp_enqueue_scripts', function() {
     $theme_dir = get_stylesheet_directory_uri();
 
     // Register our font
-    wp_register_style( 'hewebal-fonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,600,300' );
+    wp_register_style( 'hewebal-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' );
 
     // Enqueue our base stylesheet
     wp_enqueue_style( 'hewebal', $theme_dir . '/css/style.css', array( 'hewebal-fonts' ), NULL );
@@ -53,7 +53,7 @@ add_action( 'wp_enqueue_scripts', function() {
     // Need collapse for the nav bar
     wp_enqueue_script( 'bootstrap-collapse', $theme_dir . '/js/bootstrap/collapse.js', array( 'jquery' ), NULL, true );
     //wp_enqueue_script( 'bootstrap-dropdown', $theme_dir . '/js/bootstrap/dropdown.js', array( 'jquery' ), NULL, true );
-    
+
     // Enqueue OUR base JS
     wp_enqueue_script( 'hewebal', $theme_dir . '/js/hewebal.js', array( 'jquery', 'modernizr' ), NULL, true );
 
