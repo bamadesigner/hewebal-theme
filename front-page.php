@@ -21,8 +21,14 @@ get_header();
 
     </div>
     <div class="col-md-4">
-        <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/hewebAL" data-widget-id="613945196527677440">#hewebAL Tweets</a>
+
+	    <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/hashtag/hewebAL" data-widget-id="613945196527677440">#hewebAL Tweets</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+	    <div class="spotify-wrapper">
+		    <iframe src="https://embed.spotify.com/?uri=spotify:user:bamadesigner:playlist:02mU6Cls8XqGiuvnjIQkGT" width="300" height="350" frameborder="0" allowtransparency="true"></iframe>
+		</div>
+
     </div>
 </div><?php
 
