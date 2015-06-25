@@ -16,6 +16,17 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-64491820-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
 </head>
 <body <?php body_class(); ?>>
     <a href="#" id="skip-to-content">Skip to Content</a>
@@ -28,8 +39,6 @@
                 <div class="hewebal-twitter">
                     <a class="hashtag" href="https://tagboard.com/hewebAL/229349">#hewebAL</a>
                 </div>
-
-                <div class="hewebal-banner-map"></div>
 
                 <div class="hewebal-banner-menu"><?php
 
@@ -47,64 +56,67 @@
         </div>
 
         <div id="hewebal-header">
-            <div class="container-fluid">
 
-                <div class="header-left">
-                    <div class="header-left-inside">
-                        <a class="hewebal-logo" href="<?php echo get_bloginfo( 'url' ); ?>">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/hewebal-logo-white.svg" alt="HighEdWeb Alabama"/>
-                            <span class="screen-reader-text">HighEdWeb Alabama</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="hewebal-header-photo">
+                <a class="hewebal-logo" href="<?php echo get_bloginfo( 'url' ); ?>">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/hewebal-logo-white.svg" alt="HighEdWeb Alabama"/>
+                    <span class="hewebal-header-text">
+                        <span class="date">June 29-30, 2015</span>
+                        <span class="location">The University of Alabama</span>
+                        <span class="tagline">A Regional HighEdWeb Association Conference</span>
+                    </span>
+                </a>
+            </div>
+
+            <?php /*<div class="container-fluid">
+
                 <div class="header-right">
-
-                    <div class="header-right-top-wrapper">
-                        <div class="header-right-top">
-
-                            <nav id="hewebal-navbar" class="navbar navbar-default">
-
-                                <!-- Brand and toggle get grouped for better mobile display -->
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <a class="navbar-brand" href="#">Menu</a>
-                                </div><?php
-
-                                // Print the main menu
-                                wp_nav_menu( array(
-                                    'theme_location'    => 'main',
-                                    'depth'             => 2,
-                                    'container'         => 'div',
-                                    'container_class'   => 'collapse navbar-collapse',
-                                    'container_id'      => 'bs-example-navbar-collapse-1',
-                                    'menu_class'        => 'nav navbar-nav',
-                                    //'link_before'       => '<span>',
-                                    //'link_after'        => '</span>',
-                                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                                    'walker'            => new wp_bootstrap_navwalker()
-                                ) );
-
-                            ?></nav>
-
-                        </div>
-                    </div>
 
                     <div class="header-right-bottom-wrapper">
                         <div class="header-right-bottom">
-                            <?php /*<strong>What's next?</strong>&nbsp;&nbsp;<a href="#">Creative Agency with Students</a>*/ ?>
-                            Welcome to the 2015 HighEdWeb Alabama Regional Conference!
+                            <strong>What's next?</strong>&nbsp;&nbsp;<a href="#">Creative Agency with Students</a>
                         </div>
                     </div>
 
                 </div>
 
-            </div>
+            </div>*/ ?>
         </div> <!-- #hewebal-header -->
+
+        <div id="hewebal-menu">
+            <div class="container-fluid">
+
+                <nav id="hewebal-navbar" class="navbar navbar-default">
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Menu</a>
+                    </div><?php
+
+                    // Print the main menu
+                    wp_nav_menu( array(
+                        'theme_location'    => 'main',
+                        'depth'             => 2,
+                        'container'         => 'div',
+                        'container_class'   => 'collapse navbar-collapse',
+                        'container_id'      => 'bs-example-navbar-collapse-1',
+                        'menu_class'        => 'nav navbar-nav',
+                        //'link_before'       => '<span>',
+                        //'link_after'        => '</span>',
+                        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                        'walker'            => new wp_bootstrap_navwalker()
+                    ) );
+
+                ?></nav>
+
+            </div>
+        </div>
 
         <div id="hewebal-main"><?php
 
