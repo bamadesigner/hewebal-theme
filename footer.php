@@ -8,18 +8,18 @@
     if ( ! is_page_template( 'sponsors.php' ) ) {
 
 	    // Where are the sponsor images?
-	    $sponsor_images = get_stylesheet_directory_uri() . '/images/sponsors/';
+	    $sponsor_images = get_stylesheet_directory_uri() . '/images/sponsors/for-footer/';
 
-	    ?><div id="hewebal-sponsors">
+	    ?><div id="hewebal-sponsors-footer">
 		    <div class="hewebal-sponsors-inside">
 			    <div class="row">
 				    <div class="col-md-12">
 					    <h2 class="sponsors-header">Our Sponsors</h2>
-					    <a href="http://ua.edu"><img class="sponsor add-border" src="<?php echo $sponsor_images; ?>univ-of-alabama-2.png"/></a>
-					    <a href="http://www.hannonhill.com/"><img class="sponsor" src="<?php echo $sponsor_images; ?>Hannon-Hill-ad.jpg"/></a>
-					    <a href="http://www.omniupdate.com/"><img class="sponsor" src="<?php echo $sponsor_images; ?>OmniUpdate-Program-Ad.png"/></a>
+					    <a href="http://ua.edu"><img class="sponsor add-border" src="<?php echo $sponsor_images; ?>alabamprimar201.png"/></a>
+					    <a href="http://www.hannonhill.com/"><img class="sponsor" src="<?php echo $sponsor_images; ?>Hannon-Hill.png"/></a>
+					    <a href="http://www.omniupdate.com/"><img class="sponsor" src="<?php echo $sponsor_images; ?>OU-logo_300.png"/></a>
 					    <a href="https://webtide.ua.edu"><img class="sponsor" class="add-border" src="<?php echo $sponsor_images; ?>webtide.png"/></a>
-					    <a href="http://mstnr.me/1QBWNDG"><img class="sponsor" src="<?php echo $sponsor_images; ?>mStoner_banner_540x400_colorOption2.gif"/></a>
+					    <a href="http://mstnr.me/1QBWNDG"><img class="sponsor mstoner" src="<?php echo $sponsor_images; ?>mStoner-Logo.png"/></a>
 				    </div>
 			    </div>
 		    </div>

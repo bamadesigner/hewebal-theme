@@ -389,7 +389,7 @@ $banner-height: 35px;
     padding: 0;
 
     .hewebal-h1 {
-        background: rgba( $black, 0.05 );
+        background: rgba( $black, 0.04 );
         padding: 15px 0;
 
         h1 {
@@ -468,12 +468,12 @@ body.home {
 
 }
 
-#hewebal-sponsors {
+#hewebal-sponsors-footer {
     background: $white;
     text-align: center;
 
     .hewebal-sponsors-inside {
-        background: rgba( $black, 0.08 );
+        background: rgba( $black, 0.05 );
         padding: 25px 0 20px 0;
     }
 
@@ -488,8 +488,13 @@ body.home {
     img {
         display: inline-block;
         width: auto;
-        height: 100px;
+        height: 45px;
         margin: 0 10px 15px 10px;
+
+	    &.mstoner {
+		    height: 30px;
+	    }
+
     }
 
 }
