@@ -693,6 +693,31 @@ body.page-template-map {
 
 }
 
+// Any form stuff
+.gform_wrapper {
+
+	ul {
+
+		li {
+
+			&.gfield {
+				margin: 0 0 15px 0 !important;
+			}
+
+		}
+
+	}
+
+	.gform_footer {
+		padding-top: 0 !important;
+	}
+
+	.gform_button {
+		width: 97.5% !important;
+	}
+
+}
+
 #hewebal-footer {
     background: $footer-bg;
     min-height: 100px;

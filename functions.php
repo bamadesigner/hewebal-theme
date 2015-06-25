@@ -242,3 +242,11 @@ add_action( "save_post_schedule", function( $post_ID, $post, $update ) {
     delete_transient( 'hewebal_schedule_data' );
 
 });
+
+// Tweak the form submit button
+add_filter( 'gform_submit_button', function( $button_input, $form ) {
+
+	// Add some button classes
+	return preg_replace( '/gform\_button\sbutton/i', 'gform_button btn btn-primary btn-block', $button_input );
+
+}, 100 );
