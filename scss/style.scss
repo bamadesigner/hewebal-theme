@@ -113,6 +113,7 @@ $banner-height: 35px;
             font-size: 1em;
             line-height: 1;
             font-weight: 400;
+            color: $heweb-blue;
         }
 
     }
@@ -276,7 +277,7 @@ $header-left-border-width: 3px;
                     top: 0;
                     width: 200%;
                     height: 100%;
-                    background: #004990;
+                    background: #444; //#004990;
                     border-top: 2px solid darken( $heweb-red, 10% );
                     z-index: -1;
                 }
@@ -409,14 +410,15 @@ $header-left-border-width: 3px;
 }
 
 .schedule-header {
-    font-size: 31px;
-    margin: 35px 0 10px 0;
+    font-size: 25px;
+    text-transform: uppercase;
+    margin: 35px 0 0 0;
 }
 
 $schedule-border-color: rgba( $black, 0.1 );
 .schedule-table {
     border-bottom: 1px solid $schedule-border-color;
-    margin: 25px 0;
+    margin: 20px 0;
 
     .schedule-row {
         clear: both;
@@ -567,6 +569,57 @@ body.page-template-map-php {
     background: $footer-bg;
     min-height: 100px;
     border-top: 2px solid #000;
+    color: $white;
+    text-align: center;
+    padding: 30px 0 35px 0;
+    font-size: 0.8em;
+    line-height: 1.6;
+
+    a {
+        color: inherit;
+    }
+
+    .container-fluid {
+        max-width: 800px;
+    }
+
+    .heweb-logo {
+        display: block;
+        margin: 0 auto 8px auto;
+        width: auto;
+        height: 100px;
+    }
+
+    ul.footer-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        color: rgba( $white, 0.8 );
+        font-size: 0.9em;
+        line-height: 1.5;
+
+        li {
+            display: inline-block;
+            margin: 0;
+
+            &:before {
+                content: '-';
+                padding: 0 7px 0 4px;
+            }
+
+            &:first-child {
+
+                &:before {
+                    content: '';
+                    padding: 0;
+                }
+
+            }
+
+        }
+
+    }
+
 }
 
 // Small and Larger
