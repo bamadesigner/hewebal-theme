@@ -57,6 +57,11 @@ add_action( 'wp_enqueue_scripts', function() {
     // Enqueue OUR base JS
     wp_enqueue_script( 'hewebal', $theme_dir . '/js/hewebal.js', array( 'jquery', 'modernizr' ), NULL, true );
 
+    // Enqueue the schedule script on the schedule page
+    if ( is_page_template( 'schedule.php' ) ) {
+        wp_enqueue_script( 'hewebal-schedule', $theme_dir . '/js/hewebal-schedule.js', array( 'jquery' ), NULL, true );
+    }
+
 });
 
 //! Hide Query Monitor
