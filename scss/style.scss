@@ -47,6 +47,35 @@ $header-top-height: $header-height - $header-bottom-height;
 $header-left-width: 168px;
 $header-left-border-width: 2px;
 
+// For Schedule
+$event_types_with_bg: ('keynote' rgba($heweb-red, 0.08)) ('food' rgba($brand-success, 0.06)) ('social', rgba(#402e83, 0.03)) ('auditorium', rgba($heweb-light-blue, 0.3)) ('break', rgba($black, 0.01));
+
+@mixin schedule_row_with_bg($bg_color) {
+    background: none;
+    position: relative;
+    overflow: visible;
+    z-index: 0;
+    border-top: 0;
+
+    &:before {
+        content: '';
+        background: $bg_color;
+        position: absolute;
+        left: -100%;
+        top: 0;
+        width: 300%;
+        height: 100%;
+        border-top: 1px solid $schedule-border-color;
+        border-bottom: 1px solid $schedule-border-color;
+        z-index: -1;
+    }
+
+    &:last-child {
+        border-bottom: 0;
+    }
+
+}
+
 // Import our "overwrite Bootstrap" variables
 @import "../../../bootstrap/scss/bootstrap/_variables";
 
@@ -694,14 +723,26 @@ body.home {
 
 $schedule-border-color: rgba( $black, 0.1 );
 .schedule-table {
-    border-bottom: 1px solid $schedule-border-color;
     margin: 20px 0;
+
+    .panel {
+
+        &.panel-dark-red {
+            font-size: 20px;
+            line-height: 22px;
+        }
+
+    }
 
     .schedule-row {
         clear: both;
         overflow: auto;
         border-top: 1px solid $schedule-border-color;
         padding: 15px 0;
+
+        &:last-child {
+            border-bottom: 1px solid $schedule-border-color;
+        }
 
         .schedule-item {
             display: block;
@@ -744,12 +785,11 @@ $schedule-border-color: rgba( $black, 0.1 );
                 }
 
                 .session {
-                    float: left;
-                    width: 50%;
-                    padding: 0 13px 0 0;
 
                     & + .session {
-                        padding: 0 0 0 13px;
+                        margin: 17px 0 0 0;
+                        border-top: 1px solid rgba( $black, 0.1 );
+                        padding-top: 15px;
                     }
 
                     *:last-child {
@@ -800,25 +840,17 @@ $schedule-border-color: rgba( $black, 0.1 );
 
         }
 
-        &.keynote {
-            background: rgba( $heweb-red, 0.08 );
+        @each $event_type, $event_type_color in $event_types_with_bg {
+            &.#{$event_type} {
+                @include schedule_row_with_bg($event_type_color);
+            }
         }
 
-        &.food {
-            background: rgba( $brand-success, 0.06 );
-        }
-
-        $social-purple: #402e83;
-        &.social {
-            background: rgba( $social-purple, 0.03 );
-        }
-
-        &.auditorium {
-            background: rgba( $heweb-light-blue, 0.3 );
+        &.current {
+            @include schedule_row_with_bg( rgba( #f9ff00, 0.2 ) );
         }
 
         &.break {
-            background: rgba( $black, 0.01 );
 
             .event-header {
                 font-weight: normal;
@@ -827,32 +859,25 @@ $schedule-border-color: rgba( $black, 0.1 );
 
         }
 
-        &.current {
-            background: none !important;
-            position: relative;
-            overflow: visible;
-            z-index: 0;
+    }
+
+    @each $event_type, $event_type_color in $event_types_with_bg {
+        .schedule-row.#{$event_type} + .schedule-row {
             border-top: 0;
 
             &:before {
-                content: '';
-                background: rgba( #f9ff00, 0.2 );
-                position: absolute;
-                left: -100%;
-                top: 0;
-                width: 300%;
-                height: 100%;
-                border-top: 1px solid $schedule-border-color;
-                border-bottom: 1px solid $schedule-border-color;
-                z-index: -1;
+                border-top: 0;
             }
-
         }
-
     }
 
     .schedule-row.current + .schedule-row {
         border-top: 0;
+
+        &:before {
+            border-top: 0;
+        }
+
     }
 
 }
@@ -1105,6 +1130,24 @@ body.page-template-map {
    .schedule-table {
 
         .schedule-row {
+            border-top: 1px solid $schedule-border-color !important;
+
+            &:last-child {
+                border-bottom: 1px solid $schedule-border-color !important;
+            }
+
+            @each $event_type, $event_type_color in $event_types_with_bg {
+
+                &.#{$event_type} {
+                    background: $event_type_color;
+
+                    &:before {
+                        display: none;
+                    }
+
+                }
+
+            }
 
             .schedule-item {
                 display: block;
@@ -1120,6 +1163,20 @@ body.page-template-map {
                 &.event {
                     width: 85%;
                     padding: 0 10px;
+
+                    .session {
+                        float: left;
+                        width: 50%;
+                        padding: 0 13px 0 0;
+                        margin: 0 !important;
+                        border: 0 !important;
+
+                        & + .session {
+                            padding: 0 0 0 13px;
+                        }
+
+                    }
+
                 }
 
             }
