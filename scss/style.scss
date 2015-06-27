@@ -110,6 +110,12 @@ img {
 
 }
 
+.twitter-to-left {
+    background: url( '../images/twitter-bird-red.png' ) left center no-repeat;
+    background-size: auto 55px;
+    padding: 0 0 0 85px;
+}
+
 #skip-to-content {
     display: block;
     position: fixed;
@@ -633,6 +639,33 @@ body.home {
 
 }
 
+.attendees-feature {
+    padding: 35px 0 20px 0;
+    position: relative;
+    margin-top: 45px;
+
+    &:before {
+        content: '';
+        background: rgba( $black, 0.02 );
+        position: absolute;
+        left: -2000px;
+        top: 0;
+        width: 40000px;
+        height: 100%;
+    }
+
+    h2 {
+        text-transform: uppercase;
+    }
+    img.super-wide {
+        margin-left: -3%;
+        width: 106%;
+        margin-top: 10px;
+        max-width: none;
+    }
+
+}
+
 .schedule-header {
     font-size: 25px;
     text-transform: uppercase;
@@ -972,6 +1005,20 @@ body.page-template-map {
 
         &.attendees-russell {
             max-width: 400px;
+        }
+
+    }
+
+    ul {
+
+        &.institutions {
+            overflow: auto;
+
+            li {
+                display: inline-block;
+                width: 49%;
+            }
+
         }
 
     }
