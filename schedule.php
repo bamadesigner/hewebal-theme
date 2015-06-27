@@ -68,31 +68,46 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                                 // Define event type
                                 $event_type = strtolower( $event->event_type );
 
+                                // If social, shorten
+                                if ( strcasecmp( 'social event', $event_type ) == 0 )
+                                    $event_type = 'social';
+
+                                // Define classes for div
+                                $event_type_classes = array( $event_type );
+
+                                // If keynote, add session class
+                                if ( 'keynote' == $event_type )
+                                    $event_type_classes[] = 'session';
+
                                 // Print the event
-                                ?><div class="<?php echo $event_type; ?>"><?php
+                                ?><div class="<?php echo implode( ' ', $event_type_classes ); ?>"><?php
 
                                     switch ( $event_type ) {
 
                                         case 'session':
                                         case 'keynote':
+                                        case 'social':
                                             ?><h3 class="event-header"><a href="<?php echo get_permalink( $event->ID ); ?>"><?php echo $event->post_title; ?></a></h3><?php
                                             break;
 
                                         default:
                                             ?><span class="event-header"><?php echo $event->post_title; ?></span><?php
-
-                                            // Print event location
-                                            if ( ! empty( $event->event_location ) ) {
-
-                                                ?><span class="event-location"><?php echo $event->event_location; ?></span><?php
-
-                                            } else if ( 'auditorium' == $event_type ) {
-
-                                                ?><span class="event-location">Russell Hall Auditorium</span><?php
-
-                                            }
-
                                             break;
+
+                                    }
+
+                                    // Print event location
+                                    if ( 'session' != $event_type && 'social' != $event_type ) {
+
+                                        if ( ! empty( $event->event_location ) ) {
+
+                                            ?><span class="event-location"><?php echo $event->event_location; ?></span><?php
+
+                                        } else if ( 'auditorium' == $event_type ) {
+
+                                            ?><span class="event-location">Russell Hall Auditorium</span><?php
+
+                                        }
 
                                     }
 
@@ -102,11 +117,34 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                                         switch( $event_type ) {
 
                                             case 'session':
-                                                echo wpautop( wp_trim_words( $event->post_content, 55, '...' ) );
+                                                ?><div class="event-desc"><?php echo wpautop( wp_trim_words( $event->post_content, 55, '...' ) ); ?></div><?php
                                                 break;
 
                                             default:
-                                                echo wpautop( $event->post_content );
+
+                                                // Get featured image
+                                                $has_image = false;
+                                                $image_html = null;
+                                                if ( 'social' == $event_type
+                                                    && ( $post_thumbnail_id = get_post_thumbnail_id( $event->ID ) ) ) {
+
+                                                    $thumbnail_src = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
+                                                    $small_src = wp_get_attachment_image_src( $post_thumbnail_id, 'small' );
+
+                                                    $has_image = true;
+                                                    $image_html = '<img class="thumb hidden-xs hidden-sm" src="' . $thumbnail_src[0] . '" /><img class="small hidden-md hidden-lg" src="' . $small_src[0] . '" />';
+
+                                                }
+
+                                                ?><div class="event-desc<?php echo $has_image ? ' has-thumb' : null; ?>"><?php
+
+                                                    // Print thumb
+                                                    echo $has_image && $image_html ? $image_html : null;
+
+                                                    // Print description
+                                                    echo wpautop( $event->post_content );
+
+                                                ?></div><?php
                                                 break;
 
                                         }

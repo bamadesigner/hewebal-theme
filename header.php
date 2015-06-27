@@ -126,7 +126,7 @@
 
                 ?><div class="hewebal-h1">
                     <div class="container-fluid">
-                        <h1><?php echo get_the_title(); ?></h1>
+                        <h1><?php echo get_the_title();?></h1>
                     </div>
                 </div><?php
 

@@ -717,16 +717,36 @@ $schedule-border-color: rgba( $black, 0.1 );
             &.event {
                 overflow: auto;
 
-                .session {
-                    float: left;
-                    width: 50%;
-                    padding: 0 13px 0 0;
+                .event-header {
+                    font-weight: bold;
+                    margin-top: 0;
+                }
+
+                .event-location {
+                    display: block;
+                }
+
+                .session,
+                .keynote,
+                .social {
 
                     .event-header {
                         font-size: 1.2em;
                         line-height: 1.5;
                         margin: 0 0 8px 0;
+
+                        & + .event-location {
+                            margin-top: -4px;
+                        }
+
                     }
+
+                }
+
+                .session {
+                    float: left;
+                    width: 50%;
+                    padding: 0 13px 0 0;
 
                     & + .session {
                         padding: 0 0 0 13px;
@@ -738,16 +758,59 @@ $schedule-border-color: rgba( $black, 0.1 );
 
                 }
 
-                .event-header {
-                    font-weight: bold;
+                .keynote {
+
+                    .event-header {
+                        margin-bottom: 4px;
+                    }
+
                 }
 
-                .event-location {
-                    display: block;
+                .event-desc {
+                    font-size: 16px;
+                    line-height: 1.8;
+
+                    img {
+
+                        &.thumb {
+                            float: left;
+                            max-width: 20%;
+                            margin: 0 20px 20px 0;
+                        }
+
+                        &.small {
+                            width: 100%;
+                            max-width: 100%;
+                            margin: -5px 0 20px 0;
+                        }
+
+                    }
+
+                }
+
+                .social {
+
+                    .event-desc{
+                        margin: 20px 0 0 0;
+                    }
+
                 }
 
             }
 
+        }
+
+        &.keynote {
+            background: rgba( $heweb-red, 0.08 );
+        }
+
+        &.food {
+            background: rgba( $brand-success, 0.06 );
+        }
+
+        $social-purple: #402e83;
+        &.social {
+            background: rgba( $social-purple, 0.03 );
         }
 
         &.auditorium {
@@ -765,6 +828,7 @@ $schedule-border-color: rgba( $black, 0.1 );
         }
 
         &.current {
+            background: none !important;
             position: relative;
             overflow: visible;
             z-index: 0;
@@ -1055,7 +1119,7 @@ body.page-template-map {
 
                 &.event {
                     width: 85%;
-                    padding: 0 0 0 10px;
+                    padding: 0 10px;
                 }
 
             }
