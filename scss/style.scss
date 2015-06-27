@@ -17,6 +17,7 @@ $heweb-light-blue: #c6dbf1;
 $black: #000;
 $white: #fff;
 $footer-bg: #222;
+$body-bg: $footer-bg;
 
 // Change Bootstrap colors
 $brand-success: #409b40;
@@ -88,7 +89,6 @@ html{
     overflow-y: scroll;
 }
 body {
-    background: $footer-bg;
     min-height: 100%;
 }
 
@@ -429,21 +429,104 @@ $banner-height: 35px;
 
 }
 
-// The navbar
-#hewebal-navbar {
-	margin: 0;
-	padding: 0;
-	border: 0;
+// When the navbar is collapsed
+@media only screen and (max-width: ( $grid-float-breakpoint - 1 ) ) {
+
+    #hewebal-navbar {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: none;
+        min-height: 0;
+
+        .navbar-header {
+            overflow: auto;
+
+            .navbar-brand {
+                width: 50%;
+                text-decoration: none;
+                cursor: pointer;
+                color: rgba($white, 0.9);
+                text-transform: uppercase;
+                padding-left: 0;
+            }
+
+        }
+
+        .navbar-toggle {
+            background: $heweb-red;
+            border: 0;
+            margin-right: 0;
+
+            &.collapsed {
+                background: rgba($white, 0.9);
+            }
+
+            .icon-bar {
+                background-color: $body-bg;
+            }
+
+        }
+
+        .navbar-collapse {
+            background: #333;
+            border: 0;
+            margin: 0 (0 - $grid-gutter-width);
+            padding: 0 $grid-gutter-width;
+        }
+
+        .navbar-nav {
+            margin: 0;
+
+            > li {
+
+                > a {
+                    color: $white;
+                    text-decoration: none;
+                    font-size: 1.4em;
+                    line-height: 1.4;
+                    padding-left: 0;
+
+                    &:hover {
+                        background: rgba($white, 0.1);
+                        margin: 0 (0 - $grid-gutter-width);
+                        padding-left: $grid-gutter-width;
+                        padding-right: $grid-gutter-width;
+                    }
+
+                }
+
+                &.current-menu-item {
+
+                    > a {
+                        background: $heweb-red;
+                        margin: 0 (0 - $grid-gutter-width);
+                        padding-left: $grid-gutter-width;
+                        padding-right: $grid-gutter-width;
+                        color: $white;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
 }
 
 // When the navbar is open
-@media not all and (max-width: $grid-float-breakpoint) {
+@media not all and (max-width: ( $grid-float-breakpoint - 1 )) {
 
     $navbar-side-padding: 18px;
     #hewebal-navbar {
         background: none;
         border-radius: 0;
         text-align: center;
+        border: 0;
+        margin: 0;
+        padding: 0;
 
         .navbar-brand {
             display: block;
@@ -453,6 +536,10 @@ $banner-height: 35px;
             padding: 0;
             text-indent: -9999px;
             overflow: hidden;
+        }
+
+        .navbar-header {
+            float: none;
         }
 
         .navbar-collapse {
