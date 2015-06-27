@@ -24,14 +24,17 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                 // Define event type
                 $row_event_type = strtolower( $time_block[ 'event_type' ] );
 
-                ?><div class="schedule-row <?php echo $row_event_type; ?>">
+                // Get start time for this block
+                $time_block_start_time = ! empty( $time_block[ 'start_time' ] ) ? new DateTime( $day_key . ' ' . $time_block[ 'start_time' ], new DateTimeZone( 'America/Chicago' ) ) : false;
+
+                // Get end time for this block
+                $time_block_end_time = ! empty( $time_block[ 'end_time' ] ) ? new DateTime( $day_key . ' ' . $time_block[ 'end_time' ], new DateTimeZone( 'America/Chicago' ) ) : false;
+
+                // Is this the current time block?
+                $current_time_block = $current_time >= $time_block_start_time && $current_time <= $time_block_end_time;
+
+                ?><div class="schedule-row <?php echo $row_event_type; echo $current_time_block ? ' current' : NULL; ?>">
                     <div class="schedule-item time"><?php
-
-                        // Get start time for this block
-                        $time_block_start_time = ! empty( $time_block[ 'start_time' ] ) ? new DateTime( $day_key . ' ' . $time_block[ 'start_time' ], new DateTimeZone( 'America/Chicago' ) ) : false;
-
-                        // Get end time for this block
-                        $time_block_end_time = ! empty( $time_block[ 'end_time' ] ) ? new DateTime( $day_key . ' ' . $time_block[ 'end_time' ], new DateTimeZone( 'America/Chicago' ) ) : false;
 
                         // Print time time
                         if ( $time_block_start_time ) {
