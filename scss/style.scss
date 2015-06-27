@@ -156,6 +156,7 @@ img {
     // Feedback buttons
     &.feedback-button {
         text-decoration: none;
+        margin-top: 15px;
     }
 
 }
@@ -514,6 +515,10 @@ $banner-height: 35px;
         background: rgba( $black, 0.04 );
         padding: 15px 0;
 
+        .container-fluid {
+            position: relative;
+        }
+
         h1 {
             font-size: 30px;
             color: rgba( $black, 0.6 );
@@ -526,7 +531,11 @@ $banner-height: 35px;
 }
 
 #hewebal-content {
-    padding: 45px 0 40px 0;
+    padding: 40px 0 40px 0;
+    
+    .container-fluid {
+        position: relative;
+    }
 
 	h2 {
         margin-top: 40px;
@@ -882,6 +891,31 @@ $schedule-border-color: rgba( $black, 0.1 );
 
 }
 
+// Tweak the schedule page
+body.page-template-schedule {
+
+    .btn.go-to-current-event {
+        background: $heweb-blue;
+        width: 100%;
+        margin: -10px 0 30px 0;
+        text-decoration: none;
+        font-size: 20px;
+        line-height: 1.7;
+        border: 0;
+        text-transform: uppercase;
+
+        &:hover {
+            background: darken( $heweb-blue, 8% );
+        }
+
+    }
+
+    .btn.go-to-current-event + .schedule-header {
+        margin-top: 0 !important;
+    }
+
+}
+
 // Tweak the map page
 body.page-template-map {
 
@@ -1088,10 +1122,29 @@ body.page-template-map {
 
 	}
 
+    // Tweak the schedule page
+    body.page-template-schedule {
+
+        .btn.go-to-current-event {
+            width: auto;
+            position: absolute;
+            right: 30px;
+            top: 0;
+            margin: -20px 0 0 20px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+    }
+
 }
 
 // Medium and Larger
 @media not all and (min-width: 0) and (max-width: $screen-sm-max) {
+
+    #hewebal-content {
+        padding: 45px 0 40px 0;
+    }
 
 	body.home {
 
@@ -1145,6 +1198,15 @@ body.page-template-map {
                         display: none;
                     }
 
+                }
+
+            }
+
+            &.current {
+                background: rgba( #f9ff00, 0.2 );
+
+                &:before {
+                    display: none;
                 }
 
             }

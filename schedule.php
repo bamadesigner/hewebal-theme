@@ -10,6 +10,9 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
     // What time is it?
     $current_time = new DateTime( 'now', new DateTimeZone( 'America/Chicago' ) );
 
+    // Print "go to current event" button
+    ?><a href="#" class="btn btn-primary go-to-current-event">Go To Current Event</a><?php
+
     foreach ( $schedule_data as $day_key => $day ) {
 
         // Create the date for this day
@@ -31,9 +34,12 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                 $time_block_end_time = ! empty( $time_block[ 'end_time' ] ) ? new DateTime( $day_key . ' ' . $time_block[ 'end_time' ], new DateTimeZone( 'America/Chicago' ) ) : false;
 
                 // Is this the current time block?
-                $current_time_block = $current_time >= $time_block_start_time && $current_time <= $time_block_end_time;
+                $current_time_block = $current_time >= $time_block_start_time && $current_time < $time_block_end_time;
 
-                ?><div class="schedule-row <?php echo $row_event_type; echo $current_time_block ? ' current' : NULL; ?>">
+                // Is this time block over?
+                $past_time_block = $current_time > $time_block_end_time;
+
+                ?><div class="schedule-row <?php echo $row_event_type; echo $current_time_block ? ' current' : NULL; echo $past_time_block ? ' past' : null; ?>">
                     <div class="schedule-item time"><?php
 
                         // Print time time
