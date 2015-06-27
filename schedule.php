@@ -7,9 +7,12 @@ get_header();
 // Get the schedule data
 if ( $schedule_data = get_hewebal_schedule_data() ) {
 
+    // What time is it?
+    $current_time = new DateTime( 'now', new DateTimeZone( 'America/Chicago' ) );
+
     foreach ( $schedule_data as $day_key => $day ) {
 
-        // Create the date
+        // Create the date for this day
         $day_date = new DateTime( $day_key, new DateTimeZone( 'America/Chicago' ) );
 
         ?><h2 class="schedule-header"><?php echo $day_date->format( 'l, F j' ); ?></h2>
@@ -24,29 +27,29 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                 ?><div class="schedule-row <?php echo $row_event_type; ?>">
                     <div class="schedule-item time"><?php
 
-                        // Get start time
-                        $start_time = ! empty( $time_block[ 'start_time' ] ) ? new DateTime( $day_key . ' ' . $time_block[ 'start_time' ] ) : false;
+                        // Get start time for this block
+                        $time_block_start_time = ! empty( $time_block[ 'start_time' ] ) ? new DateTime( $day_key . ' ' . $time_block[ 'start_time' ], new DateTimeZone( 'America/Chicago' ) ) : false;
 
-                        // Get end time
-                        $end_time = ! empty( $time_block[ 'end_time' ] ) ? new DateTime( $day_key . ' ' . $time_block[ 'end_time' ] ) : false;
+                        // Get end time for this block
+                        $time_block_end_time = ! empty( $time_block[ 'end_time' ] ) ? new DateTime( $day_key . ' ' . $time_block[ 'end_time' ], new DateTimeZone( 'America/Chicago' ) ) : false;
 
                         // Print time time
-                        if ( $start_time ) {
+                        if ( $time_block_start_time ) {
 
                             // Print start time
-                            echo $start_time->format( 'g:i' );
+                            echo $time_block_start_time->format( 'g:i' );
 
                             // If we don't have an end time
-                            if ( ! $end_time ) {
-                                echo $start_time->format( ' a' );
+                            if ( ! $time_block_end_time ) {
+                                echo $time_block_start_time->format( ' a' );
                             } else {
 
                                 // If start meridian is different from end meridian
-                                if ( $end_time->format( 'a' ) != $start_time->format( 'a' ) )
-                                    echo $start_time->format( ' a' );
+                                if ( $time_block_end_time->format( 'a' ) != $time_block_start_time->format( 'a' ) )
+                                    echo $time_block_start_time->format( ' a' );
 
                                 // Print end time
-                                echo ' - ' . $end_time->format( 'g:i a' );
+                                echo ' - ' . $time_block_end_time->format( 'g:i a' );
 
                             }
 
@@ -95,6 +98,27 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
 
                                             default:
                                                 echo wpautop( $event->post_content );
+                                                break;
+
+                                        }
+
+                                    }
+
+                                    // Show the feedback button if 30 minutes after start
+                                    if ( ! empty( $event->session_feedback_url ) ) {
+
+                                        switch ( $event_type ) {
+
+                                            case 'session':
+                                            case 'keynote':
+
+                                                // Print feedback URL if event has been going on at least 30 minutes
+                                                if ( ( $current_time->getTimestamp() - $time_block_start_time->getTimestamp() ) >= 1800 ) {
+
+                                                    ?><a class="btn btn-success btn-block feedback-button" href="<?php echo $event->session_feedback_url; ?>" target="_blank">Give Feedback</a><?php
+
+                                                }
+
                                                 break;
 
                                         }

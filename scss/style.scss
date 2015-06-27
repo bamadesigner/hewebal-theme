@@ -18,8 +18,13 @@ $black: #000;
 $white: #fff;
 $footer-bg: #222;
 
+// Change Bootstrap colors
+$brand-success: #409b40;
+
 // Change primary color
 $brand-primary: $heweb-red;
+
+// Links
 $link-color: $heweb-red;
 $link-hover-color: darken( $link-color, 15% );
 
@@ -114,6 +119,16 @@ img {
     background: url( '../images/twitter-bird-red.png' ) left center no-repeat;
     background-size: auto 55px;
     padding: 0 0 0 85px;
+}
+
+// Buttons
+.btn {
+
+    // Feedback buttons
+    &.feedback-button {
+        text-decoration: none;
+    }
+
 }
 
 #skip-to-content {
