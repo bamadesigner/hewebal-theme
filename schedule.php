@@ -80,7 +80,13 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
 
                                             // Print event location
                                             if ( ! empty( $event->event_location ) ) {
+
                                                 ?><span class="event-location"><?php echo $event->event_location; ?></span><?php
+
+                                            } else if ( 'auditorium' == $event_type ) {
+
+                                                ?><span class="event-location">Russell Hall Auditorium</span><?php
+
                                             }
 
                                             break;
