@@ -121,7 +121,7 @@ function get_hewebal_schedule_data() {
     }
 
     // These are the custom meta keys
-    $custom_keys = array( 'event_type', 'event_location', 'event_date', 'event_start_hour', 'event_start_minute', 'event_end_hour', 'event_end_minute', 'event_session_room', 'session_feedback_url', 'learning_objectives', 'speakers' );
+    $custom_keys = array( 'event_type', 'event_location', 'event_date', 'event_start_hour', 'event_start_minute', 'event_end_hour', 'event_end_minute', 'event_session_room', 'session_slides_url', 'session_slides_file', 'session_feedback_url', 'learning_objectives', 'speakers' );
 
     // One query to rule them all!
     $schedule_query = "SELECT posts.*";

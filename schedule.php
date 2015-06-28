@@ -85,100 +85,152 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                                 if ( 'keynote' == $event_type )
                                     $event_type_classes[] = 'session';
 
+                                // Do we have an event image?
+                                $event_image_src = false;
+
+                                // Get event image
+                                switch( $event_type ) {
+
+                                    case 'keynote':
+
+                                        // Get featured image
+                                        if ( $post_thumbnail_id = get_post_thumbnail_id( $event->ID ) ) {
+
+                                            // Store image src
+                                            $event_image_src = ( $event_image_info = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' ) ) && isset( $event_image_info[0] ) ? $event_image_info[0] : false;
+
+                                        }
+
+                                        break;
+
+                                }
+
+                                // Add a class
+                                if ( $event_image_src ) {
+                                    $event_type_classes[] = 'has-event-image';
+                                }
+
                                 // Print the event
                                 ?><div class="<?php echo implode( ' ', $event_type_classes ); ?>"><?php
 
-                                    switch ( $event_type ) {
-
-                                        case 'session':
-                                        case 'keynote':
-                                        case 'social':
-                                            ?><h3 class="event-header"><a href="<?php echo get_permalink( $event->ID ); ?>"><?php echo $event->post_title; ?></a></h3><?php
-                                            break;
-
-                                        default:
-                                            ?><span class="event-header"><?php echo $event->post_title; ?></span><?php
-                                            break;
-
+                                    // Show pic
+                                    if ( $event_image_src ) {
+                                        ?><img class="event-image" src="<?php echo $event_image_src; ?>" /><?php
                                     }
 
-                                    // Print event location
-                                    if ( 'session' != $event_type && 'social' != $event_type ) {
-
-                                        if ( ! empty( $event->event_location ) ) {
-
-                                            ?><span class="event-location"><?php echo $event->event_location; ?></span><?php
-
-                                        } else if ( 'auditorium' == $event_type ) {
-
-                                            ?><span class="event-location">Russell Hall Auditorium</span><?php
-
-                                        }
-
-                                    }
-
-                                    // If it has content...
-                                    if ( ! empty( $event->post_content ) ) {
-
-                                        switch( $event_type ) {
-
-                                            case 'session':
-                                                ?><div class="event-desc"><?php echo wpautop( wp_trim_words( $event->post_content, 55, '...' ) ); ?></div><?php
-                                                break;
-
-                                            default:
-
-                                                // Get featured image
-                                                $has_image = false;
-                                                $image_html = null;
-                                                if ( 'social' == $event_type
-                                                    && ( $post_thumbnail_id = get_post_thumbnail_id( $event->ID ) ) ) {
-
-                                                    $thumbnail_src = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
-                                                    $small_src = wp_get_attachment_image_src( $post_thumbnail_id, 'small' );
-
-                                                    $has_image = true;
-                                                    $image_html = '<img class="thumb hidden-xs hidden-sm" src="' . $thumbnail_src[0] . '" /><img class="small hidden-md hidden-lg" src="' . $small_src[0] . '" />';
-
-                                                }
-
-                                                ?><div class="event-desc<?php echo $has_image ? ' has-thumb' : null; ?>"><?php
-
-                                                    // Print thumb
-                                                    echo $has_image && $image_html ? $image_html : null;
-
-                                                    // Print description
-                                                    echo wpautop( $event->post_content );
-
-                                                ?></div><?php
-                                                break;
-
-                                        }
-
-                                    }
-
-                                    // Show the feedback button if 30 minutes after start
-                                    if ( ! empty( $event->session_feedback_url ) ) {
+                                    ?><div class="event-text"><?php
 
                                         switch ( $event_type ) {
 
                                             case 'session':
                                             case 'keynote':
+                                            case 'social':
+                                                ?><h3 class="event-header"><a href="<?php echo get_permalink( $event->ID ); ?>"><?php echo $event->post_title; ?></a></h3><?php
+                                                break;
 
-                                                // Print feedback URL if event has been going on at least 30 minutes
-                                                if ( ( $current_time->getTimestamp() - $time_block_start_time->getTimestamp() ) >= 1800 ) {
-
-                                                    ?><a class="btn btn-success btn-block feedback-button" href="<?php echo $event->session_feedback_url; ?>" target="_blank">Give Feedback</a><?php
-
-                                                }
-
+                                            default:
+                                                ?><span class="event-header"><?php echo $event->post_title; ?></span><?php
                                                 break;
 
                                         }
 
-                                    }
+                                        // Print event location
+                                        if ( 'session' != $event_type && 'social' != $event_type ) {
 
-                                ?></div><?php
+                                            if ( ! empty( $event->event_location ) ) {
+
+                                                ?><span class="event-location"><?php echo $event->event_location; ?></span><?php
+
+                                            } else if ( 'auditorium' == $event_type ) {
+
+                                                ?><span class="event-location">Russell Hall Auditorium</span><?php
+
+                                            }
+
+                                        }
+
+                                        // If it has content...
+                                        if ( ! empty( $event->post_content ) ) {
+
+                                            switch( $event_type ) {
+
+                                                case 'keynote':
+                                                    ?><div class="event-desc"><?php echo wpautop( $event->post_excerpt ); ?></div><?php
+                                                    break;
+
+                                                case 'session':
+                                                    ?><div class="event-desc"><?php echo wpautop( wp_trim_words( $event->post_content, 55, '...' ) ); ?></div><?php
+                                                    break;
+
+                                                default:
+
+                                                    // Get featured image
+                                                    $has_image = false;
+                                                    $image_html = null;
+                                                    if ( 'social' == $event_type
+                                                        && ( $post_thumbnail_id = get_post_thumbnail_id( $event->ID ) ) ) {
+
+                                                        $thumbnail_src = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
+                                                        $small_src = wp_get_attachment_image_src( $post_thumbnail_id, 'small' );
+
+                                                        $has_image = true;
+                                                        $image_html = '<img class="thumb hidden-xs hidden-sm" src="' . $thumbnail_src[0] . '" /><img class="small hidden-md hidden-lg" src="' . $small_src[0] . '" />';
+
+                                                    }
+
+                                                    ?><div class="event-desc<?php echo $has_image ? ' has-thumb' : null; ?>"><?php
+
+                                                        // Print thumb
+                                                        echo $has_image && $image_html ? $image_html : null;
+
+                                                        // Print description
+                                                        echo wpautop( $event->post_content );
+
+                                                    ?></div><?php
+                                                    break;
+
+                                            }
+
+                                        }
+
+                                        // Show the slides button if after 15 minutes before start
+                                       if ( ( $current_time->getTimestamp() - $time_block_start_time->getTimestamp() ) >= -900 ) {
+
+                                            // Get from URL first
+                                            $session_slides_url = ! empty( $event->session_slides_url ) ? $event->session_slides_url : false;
+
+                                            // If no URL, get field
+                                            if ( ! $session_slides_url && ! empty( $event->session_slides_file ) ) {
+                                                $session_slides_url = wp_get_attachment_url( $event->session_slides_file );
+                                           }
+
+                                           if ( $session_slides_url ) {
+                                               ?><a class="btn btn-info btn-block slides-button" href="<?php echo $session_slides_url; ?>" target="_blank">View Slides</a><?php
+                                           }
+
+                                       }
+
+                                        // Show the feedback button if 30 minutes after start
+                                        if ( ! empty( $event->session_feedback_url ) ) {
+
+                                            switch ( $event_type ) {
+
+                                                case 'session':
+                                                case 'keynote':
+
+                                                    // Print feedback URL if event has been going on at least 30 minutes
+                                                    if ( ( $current_time->getTimestamp() - $time_block_start_time->getTimestamp() ) >= 1800 ) {
+                                                        ?><a class="btn btn-success btn-block feedback-button" href="<?php echo $event->session_feedback_url; ?>" target="_blank">Give Feedback</a><?php
+                                                    }
+
+                                                    break;
+
+                                            }
+
+                                        }
+
+                                    ?></div>
+                                </div><?php
 
                             }
                         }

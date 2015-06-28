@@ -21,6 +21,7 @@ $body-bg: $footer-bg;
 
 // Change Bootstrap colors
 $brand-success: #409b40;
+$brand-info: $heweb-blue;
 
 // Change primary color
 $brand-primary: $heweb-red;
@@ -153,8 +154,8 @@ img {
 // Buttons
 .btn {
 
-    // Feedback buttons
-    &.feedback-button {
+    &.feedback-button,
+    &.slides-button {
         text-decoration: none;
         margin-top: 15px;
     }
@@ -194,9 +195,13 @@ img {
     &.panel-dark-red {
         background: $heweb-red;
         color: $white;
-        text-align: center;
-        font-size: 22px;
-        line-height: 26px;
+
+        &.big-text {
+            font-size: 22px;
+            line-height: 26px;
+            text-align: center;
+        }
+
     }
 
     & + .panel {
@@ -828,6 +833,17 @@ $schedule-border-color: rgba( $black, 0.1 );
             line-height: 22px;
         }
 
+        &.panel-check-in-parking {
+            margin: 12px 0 5px 0;
+
+            .panel-body {
+                padding: 10px;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+        }
+
     }
 
     .schedule-row {
@@ -844,6 +860,7 @@ $schedule-border-color: rgba( $black, 0.1 );
             display: block;
             clear: both;
             background: none;
+            position: relative;
 
             &.time {
                 font-size: 0.85em;
@@ -874,6 +891,22 @@ $schedule-border-color: rgba( $black, 0.1 );
 
                         & + .event-location {
                             margin-top: -4px;
+                        }
+
+                    }
+
+                }
+
+                .keynote {
+
+                    &.has-event-image {
+                        overflow: auto;
+
+                        .event-image {
+                            float: right;
+                            width: 200px;
+                            height: auto;
+                            margin: 5px 10px 20px 20px;
                         }
 
                     }
@@ -920,6 +953,19 @@ $schedule-border-color: rgba( $black, 0.1 );
                             margin: -5px 0 20px 0;
                         }
 
+                    }
+
+                    .twitter-to-left {
+                        background-size: auto 20px;
+                        padding: 0 0 0 30px;
+                    }
+
+                }
+
+                .keynote {
+
+                    .event-desc{
+                        margin: 15px 0 0 0;
                     }
 
                 }
@@ -982,6 +1028,7 @@ $schedule-border-color: rgba( $black, 0.1 );
 body.page-template-schedule {
 
     .btn.go-to-current-event {
+        display: none; // Hide by default
         background: $heweb-blue;
         width: 100%;
         margin: -10px 0 30px 0;
@@ -1229,10 +1276,6 @@ body.page-template-map {
 // Medium and Larger
 @media not all and (min-width: 0) and (max-width: $screen-sm-max) {
 
-    #hewebal-content {
-        padding: 45px 0 40px 0;
-    }
-
 	body.home {
 
 		.twitter-timeline-wrapper {
@@ -1322,6 +1365,12 @@ body.page-template-map {
 
                         & + .session {
                             padding: 0 0 0 13px;
+                        }
+
+                        &.keynote {
+                            float: none;
+                            width: 100%;
+                            padding: 0;
                         }
 
                     }
