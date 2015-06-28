@@ -8,19 +8,6 @@ get_header();
 
 <div class="row">
     <div class="col-md-5 col-md-offset-1">
-        <h2>HighEdWeb Association</h2>
-        <ul>
-            <li>Tonya Oaks Smith</li>
-            <li>Shelley Keith</li>
-            <li>Dave Olsen</li>
-            <li>Jason Woodward</li>
-            <li>Colleen Brennan-Barry</li>
-            <li>Sven Aas</li>
-            <li>Sara Clark</li>
-            <li>Marilyn Giannoccaro</li>
-        </ul>
-    </div>
-    <div class="col-md-5">
         <h2>HighEdWeb Alabama</h2>
         <ul>
             <li>Rachel Carden</li>
@@ -31,6 +18,19 @@ get_header();
             <li>Lisa Sandy</li>
             <li>Camisha Adams</li>
             <li>Donald Malone</li>
+        </ul>
+    </div>
+    <div class="col-md-5">
+        <h2>HighEdWeb Association</h2>
+        <ul>
+            <li>Tonya Oaks Smith</li>
+            <li>Shelley Keith</li>
+            <li>Dave Olsen</li>
+            <li>Jason Woodward</li>
+            <li>Colleen Brennan-Barry</li>
+            <li>Sven Aas</li>
+            <li>Sara Clark</li>
+            <li>Marilyn Giannoccaro</li>
         </ul>
     </div>
 </div>
