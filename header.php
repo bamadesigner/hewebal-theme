@@ -42,6 +42,9 @@
 
 	            <a class="hewebal-phone" href="tel:+1-205-690-3899">(205) 690-3899</a>
 
+                <!-- Button trigger modal -->
+                <img class="hewebal-wifi-trigger" data-toggle="modal" data-target="#hewebAL-WiFi-Modal" src="<?php echo get_stylesheet_directory_uri(); ?>/images/wifi.svg" alt="How to Connect to Wifi" />
+
                 <div class="hewebal-banner-menu"><?php
 
                     // Print the banner menu

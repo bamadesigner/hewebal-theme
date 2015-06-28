@@ -286,6 +286,15 @@ $banner-height: 35px;
         background: url( '../images/google-map-banner.png' ) left top no-repeat;
     }
 
+    .hewebal-wifi-trigger {
+        display: block;
+        float: left;
+        width: auto;
+        height: 20px;
+        margin: 7px 0 0 8px;
+        cursor: pointer;
+    }
+
     .hewebal-banner-menu {
         //background: rgba($heweb-light-blue, 0.5);
         overflow: auto;
@@ -878,6 +887,7 @@ $schedule-border-color: rgba( $black, 0.1 );
 
                 .event-location {
                     display: block;
+                    font-style: italic;
                 }
 
                 .session,
@@ -1180,6 +1190,18 @@ body.page-template-map {
 		font-size: 20px;
 		line-height: 1.4;
 	}
+
+}
+
+#hewebAL-WiFi-Modal {
+
+    .modal-body {
+        padding-top: 25px;
+    }
+
+    .hewebal-wifi-icon {
+        max-height: 100px;
+    }
 
 }
 

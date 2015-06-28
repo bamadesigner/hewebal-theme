@@ -8,7 +8,7 @@ get_header();
     <iframe src="https://www.google.com/maps/d/embed?mid=zexjgVPyBHAI.kJVG1uo3hCww"></iframe>
 	<div class="hewebal-map-buttons">
 	    <span class="view-fullscreen btn btn-primary">View Fullscreen</span>
-		<a class="view-goggle btn btn-primary" href="http://bit.ly/hewebal-map">View in Google</a>
+		<a class="view-goggle btn btn-primary" href="http://bit.ly/hewebal-map" target="_blank">View in Google</a>
 	</div>
 </div><?php
 

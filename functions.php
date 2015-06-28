@@ -52,7 +52,7 @@ add_action( 'wp_enqueue_scripts', function() {
     
     // Need collapse for the nav bar
     wp_enqueue_script( 'bootstrap-collapse', $theme_dir . '/js/bootstrap/collapse.js', array( 'jquery' ), NULL, true );
-    //wp_enqueue_script( 'bootstrap-dropdown', $theme_dir . '/js/bootstrap/dropdown.js', array( 'jquery' ), NULL, true );
+    wp_enqueue_script( 'bootstrap-modal', $theme_dir . '/js/bootstrap/modal.js', array( 'jquery' ), NULL, true );
 
     // Enqueue OUR base JS
     wp_enqueue_script( 'hewebal', $theme_dir . '/js/hewebal.js', array( 'jquery', 'modernizr' ), NULL, true );
