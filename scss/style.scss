@@ -97,6 +97,10 @@ body {
     color: $heweb-red;
 }
 
+.blue-text {
+    color: $heweb-blue;
+}
+
 // Hide these elements visibly, but make sure they're still viewable by screen readers
 .screen-reader-text {
     display: block;
@@ -639,6 +643,8 @@ $banner-height: 35px;
     }
 
 	h2 {
+        font-size: 30px;
+        line-height: 1.2;
         margin-top: 40px;
 
 		&:first-child {
@@ -647,6 +653,12 @@ $banner-height: 35px;
 
 	}
 
+}
+
+.hewebal-about-tagline {
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
 }
 
 // Tweak the home page
@@ -661,8 +673,8 @@ body.home {
     }
 
     h2 {
-        font-size: 26px;
-	    line-height: 1.2;
+        font-size: 26px !important;
+	    line-height: 1.2 !important;
         text-transform: uppercase;
         margin: 35px 0 10px 0;
 	    color: rgba( $black, 0.6 );
@@ -677,9 +689,40 @@ body.home {
 
     }
 
-	.btn {
-		text-decoration: none;
+    .flickr-promo-wrapper {
+        background: url( '../images/flickr-logo.png' ) 10px center no-repeat rgba( $heweb-blue, 0.06 );
+        background-size: auto 40px;
+        border: 1px solid rgba( $black, 0.1 );
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        padding: 15px 15px 15px 65px;
+        margin: 8px 0 6px 0;
+        font-size: 15px;
+        line-height: 1.5;
+        color: $black;
 
+        a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .underline {
+            text-decoration: underline;
+            color: $link-color;
+        }
+
+        *:last-child {
+            margin-bottom: 0;
+        }
+
+    }
+
+	.btn {
+        white-space: normal;
+		text-decoration: none;
+        margin-top: 20px;
 
 		&.btn-default {
 			background: rgba( $black, 0.03 );
@@ -689,10 +732,6 @@ body.home {
 				background: #e8e8e8;
 			}
 
-		}
-
-		&:hover {
-			text-decoration: underline;
 		}
 
 	}
@@ -775,20 +814,11 @@ body.home {
     img {
         display: inline-block;
         width: auto;
-        max-width: 500px;
-        margin: 0 15px 30px 15px;
+        margin: 0 0 30px 0;
 
         &.add-border {
             border: 1px solid rgba( $black, 0.2 );
         }
-    }
-
-    &.gold {
-
-        img {
-            max-width: 640px;
-        }
-
     }
 
 }
@@ -811,6 +841,7 @@ body.home {
     h2 {
         text-transform: uppercase;
     }
+
     img.super-wide {
         margin-left: -3%;
         width: 106%;
@@ -1278,6 +1309,23 @@ body.page-template-map {
 
 	}
 
+    .sponsors {
+
+        img {
+            max-width: 500px;
+            margin: 0 15px 30px 15px;
+        }
+
+        &.gold {
+
+            img {
+                max-width: 640px;
+            }
+
+        }
+
+    }
+
     // Tweak the schedule page
     body.page-template-schedule {
 
@@ -1297,6 +1345,14 @@ body.page-template-map {
 
 // Medium and Larger
 @media not all and (min-width: 0) and (max-width: $screen-sm-max) {
+
+    img {
+
+        &.about-hewebal-auditorium {
+            max-width: 600px;
+        }
+
+    }
 
 	body.home {
 
@@ -1404,5 +1460,13 @@ body.page-template-map {
        }
 
    }
+
+    #hewebal-content {
+
+        h2 {
+            font-size: 36px;
+        }
+
+    }
 
 }
