@@ -121,7 +121,7 @@ function get_hewebal_schedule_data( $schedule_post_id = 0 ) {
         && $transient_schedule_data !== false ) {
 
         // Return the cached schedule data
-        //return $transient_schedule_data;
+        return $transient_schedule_data;
 
     }
 

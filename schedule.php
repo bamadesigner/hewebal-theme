@@ -143,7 +143,7 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                                         }
 
                                         // Print event location
-                                        if ( 'session' != $event_type && 'social' != $event_type ) {
+                                        if ( 'social' != $event_type ) {
 
                                             if ( ! empty( $event->event_location ) ) {
 
@@ -152,6 +152,10 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                                             } else if ( 'auditorium' == $event_type ) {
 
                                                 ?><span class="event-location">Russell Hall Auditorium</span><?php
+
+                                            } else if ( 'session' == $event_type ) {
+
+                                                ?><span class="event-location">RM <?php echo 1 == $event->event_session_room ? '344' : ( 2 == $event->event_session_room ? '345' : null ); ?></span><?php
 
                                             }
 
