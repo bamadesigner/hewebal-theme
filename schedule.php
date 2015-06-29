@@ -202,7 +202,7 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                                         }
 
                                         // Show the slides button if after 15 minutes before start
-                                       if ( ( $current_time->getTimestamp() - $time_block_start_time->getTimestamp() ) >= -900 ) {
+                                        if ( ( $current_time->getTimestamp() - $time_block_start_time->getTimestamp() ) >= -900 ) {
 
                                             // Get from URL first
                                             $session_slides_url = ! empty( $event->session_slides_url ) ? $event->session_slides_url : false;
