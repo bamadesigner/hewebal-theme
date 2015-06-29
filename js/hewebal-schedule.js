@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
 
 	// If current events, then show button
 	if ( jQuery( '.schedule-row.current' ).length >= 1 )
-		$go_to_current_event.show();
+		$go_to_current_event.show().css({'display':'block'});
 
 	// If the button is clicked...
 	$go_to_current_event.on( 'click', function( $event ) {

@@ -335,7 +335,7 @@ $banner-height: 35px;
     }
 
     .hewebal-banner-menu {
-        //background: rgba($heweb-light-blue, 0.5);
+        display: none;
         overflow: auto;
 
         ul#hewebal-banner-menu {
@@ -1165,6 +1165,8 @@ $schedule-border-color: rgba( $black, 0.1 );
 }
 
 .collapsible-schedule-block {
+    display : block;
+    clear: both;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -1455,6 +1457,14 @@ body.page-template-map {
 // Small and Larger
 @media not all and (min-width: 0) and (max-width: $screen-xs-max) {
 
+    #hewebal-banner {
+
+        .hewebal-banner-menu {
+            display: block;
+        }
+
+    }
+
 	body.home {
 
 		.twitter-timeline-wrapper,
@@ -1486,10 +1496,12 @@ body.page-template-map {
 
         .btn.go-to-current-event {
             width: auto;
-            position: absolute;
-            right: 30px;
-            top: 0;
-            margin: -20px 0 0 20px;
+            float: right;
+            width: auto;
+            //position: absolute;
+            //right: 30px;
+            //top: 0;
+            margin: -20px 0 15px 20px;
             font-size: 16px;
             line-height: 1.7;
         }
