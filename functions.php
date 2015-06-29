@@ -105,11 +105,16 @@ function run_the_hewebal_loop() {
 }
 
 //! Get HEWEBAL schedule data
-function get_hewebal_schedule_data() {
+function get_hewebal_schedule_data( $schedule_post_id = 0 ) {
     global $wpdb;
 
     // See if we have the data stored in a transient
     $schedule_transient_name = 'hewebal_schedule_data';
+
+    // If we're looking for an item...
+    if ( $schedule_post_id > 0 ) {
+        $schedule_transient_name .=  "_item_{$schedule_post_id}";
+    }
 
     // If we have cached schedule data...
     if ( ( $transient_schedule_data = get_transient( $schedule_transient_name ) )
@@ -138,13 +143,19 @@ function get_hewebal_schedule_data() {
             $schedule_query .= " LEFT JOIN {$wpdb->postmeta} {$key}_meta ON {$key}_meta.post_id = posts.ID AND {$key}_meta.meta_key = '{$key}'";
         }
 
-    $schedule_query .= " WHERE posts.post_type = 'schedule' AND posts.post_status = 'publish'
+    $schedule_query .= " WHERE";
+
+        if ( $schedule_post_id > 0 ) {
+            $schedule_query .= " posts.ID = {$schedule_post_id} AND";
+        }
+
+    $schedule_query .= " posts.post_type = 'schedule' AND posts.post_status = 'publish'
         ORDER BY event_date_meta.meta_value ASC, LENGTH( event_start_hour_meta.meta_value ) ASC, event_start_hour_meta.meta_value ASC, event_start_minute_meta.meta_value ASC, LENGTH( event_end_hour_meta.meta_value ) ASC, event_end_hour_meta.meta_value ASC, event_end_minute_meta.meta_value ASC, event_session_room_meta.meta_value ASC";
 
-    // Store the data
+    // Get/store the data
     if ( $schedule_data = $wpdb->get_results( $schedule_query ) ) {
 
-        // Sort by DateTime
+        // Sort by DateTime if no ID
         $schedule_sorted_by_dt = array();
 
         foreach( $schedule_data as &$schedule_item ) {
@@ -177,13 +188,17 @@ function get_hewebal_schedule_data() {
                 }
 
                 // Store start and end time
-                $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'start_time' ] = $start_time;
-                $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'end_time' ] = $end_time;
+                if ( ! $schedule_post_id ) {
+                    $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'start_time' ] = $start_time;
+                    $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'end_time' ] = $end_time;
+                }
 
             }
 
             // Store session type
-            $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'event_type' ] = $schedule_item->event_type;
+            if ( ! $schedule_post_id ) {
+                $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'event_type' ] = $schedule_item->event_type;
+            }
 
             // Store the speaker count
             $speaker_count = $schedule_item->speakers;
@@ -225,13 +240,20 @@ function get_hewebal_schedule_data() {
 
             }
 
+            // If it's one item, return and get out of here
+            if ( $schedule_post_id > 0 ) {
+                set_transient( $schedule_transient_name, $schedule_item, 604800 );
+                return $schedule_item;
+            }
+
             // Sort by date, then start time
-            $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'events' ][] = $schedule_item;
+            $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'events' ][ ] = $schedule_item;
 
         }
 
         // Store for a week - it updates when any schedule items are updated
-        set_transient( $schedule_transient_name, $schedule_sorted_by_dt, 604800 );
+        if ( ! $schedule_post_id )
+            set_transient( $schedule_transient_name, $schedule_sorted_by_dt, 604800 );
 
         return $schedule_sorted_by_dt;
 
@@ -245,6 +267,7 @@ function get_hewebal_schedule_data() {
 add_action( "save_post_schedule", function( $post_ID, $post, $update ) {
 
     delete_transient( 'hewebal_schedule_data' );
+    delete_transient( "hewebal_schedule_data_{$post_ID}" );
 
 });
 
