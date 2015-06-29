@@ -8,11 +8,25 @@ jQuery(document).ready(function($) {
 		$go_to_current_event.show();
 
 	// If the button is clicked...
-	$go_to_current_event.on( 'click touchend', function( $event ) {
+	$go_to_current_event.on( 'click', function( $event ) {
 		$event.preventDefault();
 
 		// Scroll to current event
 		jQuery( document ).scrollTop( jQuery( '.schedule-row.current' ).offset().top );
+
+	});
+
+	// Handle collapsed schedule blocks
+	jQuery( '.collapsible-schedule-block .schedule-header' ).on( 'click', function( $event ) {
+
+		// Get parent
+		var $the_block = jQuery( this ).closest( '.collapsible-schedule-block' );
+
+		if ( $the_block.hasClass( 'open' ) ) {
+			$the_block.removeClass( 'open' );
+		} else {
+			$the_block.addClass( 'open' );
+		}
 
 	});
 

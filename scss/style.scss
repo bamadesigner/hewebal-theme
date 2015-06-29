@@ -149,6 +149,17 @@ img {
 
 }
 
+h2 {
+    font-size: 30px;
+    line-height: 1.2;
+    margin-top: 40px;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+}
+
 .twitter-to-left {
     background: url( '../images/twitter-bird-red.png' ) left center no-repeat;
     background-size: auto 55px;
@@ -642,17 +653,6 @@ $banner-height: 35px;
         position: relative;
     }
 
-	h2 {
-        font-size: 30px;
-        line-height: 1.2;
-        margin-top: 40px;
-
-		&:first-child {
-			margin-top: 0;
-		}
-
-	}
-
 }
 
 .hewebal-about-tagline {
@@ -834,6 +834,7 @@ body.home {
     padding: 35px 0 20px 0;
     position: relative;
     margin-top: 45px;
+    z-index: 0;
 
     &:before {
         content: '';
@@ -843,6 +844,7 @@ body.home {
         top: 0;
         width: 40000px;
         height: 100%;
+        z-index: -1;
     }
 
     h2 {
@@ -1066,6 +1068,62 @@ $schedule-border-color: rgba( $black, 0.1 );
 
         &:before {
             border-top: 0;
+        }
+
+    }
+
+}
+
+.collapsible-schedule-block {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0 -10px 30px -10px;
+    overflow: hidden;
+
+    .schedule-header {
+        background: rgba( $black, 0.04 );
+        margin: 0;
+        padding: 10px;
+        position: relative;
+        z-index: 0;
+        cursor: pointer;
+
+        &:before {
+            content: 'View';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            margin: -9px 0 0 0;
+            font-size: 15px;
+            line-height: 1.2;
+            font-weight: normal;
+            text-transform: uppercase;
+            cursor: pointer;
+            z-index: -1;
+        }
+
+    }
+
+    .schedule-table {
+        display: none;
+    }
+
+    &.open {
+
+        .schedule-header {
+
+            &:before {
+                content: 'Close';
+            }
+
+        }
+
+        .schedule-table {
+            display: block;
+            margin: 0;
+            padding: 0;
         }
 
     }
@@ -1395,6 +1453,10 @@ body.page-template-map {
 
     }
 
+    h2 {
+        font-size: 36px;
+    }
+
    .schedule-table {
 
         .schedule-row {
@@ -1467,13 +1529,5 @@ body.page-template-map {
        }
 
    }
-
-    #hewebal-content {
-
-        h2 {
-            font-size: 36px;
-        }
-
-    }
 
 }
