@@ -200,11 +200,42 @@ function get_hewebal_schedule_data( $schedule_post_id = 0 ) {
                 $schedule_sorted_by_dt[ $schedule_item->event_date ][ $start_time ][ 'event_type' ] = $schedule_item->event_type;
             }
 
+            // Store the learning objectives count
+            $learning_count = $schedule_item->learning_objectives;
+
+            // Clear out the learning objectives
+            $schedule_item->learning_objectives = array();
+
             // Store the speaker count
             $speaker_count = $schedule_item->speakers;
 
             // Clear out the speakers
             $schedule_item->speakers = NULL;
+
+            // If this item has learning objectives...
+            if ( $learning_count >= 1 ) {
+
+                // Going to now use the learning objectives area for the info
+                $schedule_item->learning_objectives = array();
+
+                for( $learning_index = 0; $learning_index < $learning_count; $learning_index++ ) {
+
+                    // Get the data
+                    $learning_data = $wpdb->get_results( "SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = {$schedule_item->ID} AND meta_key LIKE 'learning\_objectives\_{$learning_index}\_%' " );
+                    if ( $learning_data ) {
+
+                        foreach( $learning_data as $data ) {
+
+                            // Store objective
+                            $schedule_item->learning_objectives[] = $data->meta_value;
+
+                        }
+
+                    }
+
+                }
+
+            }
 
             // If this item has speakers...
             if ( $speaker_count >= 1 ) {
