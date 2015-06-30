@@ -157,7 +157,7 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
 
                                             } else if ( 'session' == $event_type ) {
 
-                                                ?><span class="event-location">RM <?php echo 1 == $event->event_session_room ? '345' : ( 2 == $event->event_session_room ? '344' : null ); ?></span><?php
+                                                ?><span class="event-location">RM <?php echo 1 == $event->event_session_room ? '355' : ( 2 == $event->event_session_room ? '354' : null ); ?></span><?php
 
                                             }
 

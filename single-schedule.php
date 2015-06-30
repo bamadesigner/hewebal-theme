@@ -55,7 +55,7 @@ $end_time = ! empty( $item_data->event_date ) && ! empty( $item_data->event_end_
                             }
 
                         ?></li>
-                        <li><strong>Room:</strong> <?php echo ! empty( $item_data->event_location ) ? $item_data->event_location : ( 1 == $item_data->event_session_room ? '344' : ( 2 == $item_data->event_session_room ? '345' : null ) ); ?></li>
+                        <li><strong>Room:</strong> <?php echo ! empty( $item_data->event_location ) ? $item_data->event_location : ( 1 == $item_data->event_session_room ? '355' : ( 2 == $item_data->event_session_room ? '354' : null ) ); ?></li>
                     </ul><?php
 
                     // Show the slides button if after 15 minutes before start
