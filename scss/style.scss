@@ -696,6 +696,14 @@ body.home {
 	    color: $heweb-red;
     }
 
+    .conference-eval {
+        width: 90%;
+        margin: 0 auto 40px auto;
+        line-height: 1.5;
+        white-space: normal;
+        text-decoration: none;
+    }
+
     h2 {
         font-size: 26px !important;
 	    line-height: 1.2 !important;
@@ -743,7 +751,7 @@ body.home {
 
     }
 
-	.btn {
+	.btn.btn-default {
         white-space: normal;
 		text-decoration: none;
         margin-top: 20px;
@@ -1225,25 +1233,46 @@ $schedule-border-color: rgba( $black, 0.1 );
 // Tweak the schedule page
 body.page-template-schedule {
 
-    .btn.go-to-current-event {
-        display: none; // Hide by default
-        background: $heweb-blue;
-        width: 100%;
+    .schedule-main-buttons-wrapper {
         margin: -10px 0 30px 0;
-        text-decoration: none;
-        font-size: 20px;
-        line-height: 1.7;
-        border: 0;
-        text-transform: uppercase;
 
-        &:hover {
-            background: darken( $heweb-blue, 8% );
+        .btn {
+            font-size: 20px;
+            line-height: 1.7;
+            text-decoration: none;
+            margin: 0;
         }
 
-    }
+        .btn.conference-eval {
+            display: block;
+            width: 100%;
+        }
 
-    .btn.go-to-current-event + .schedule-header {
-        margin-top: 0 !important;
+        .btn.go-to-current-event {
+            display: none; // Hide by default
+            background: $heweb-blue;
+            width: 100%;
+            border: 0;
+            text-transform: uppercase;
+
+            &:hover {
+                background: darken($heweb-blue, 8%);
+            }
+
+        }
+
+        .btn.go-to-current-event + .schedule-header {
+            margin-top: 0 !important;
+        }
+
+        &.has-go-to-event {
+
+            .btn + .btn {
+                margin-top: 10px;
+            }
+
+        }
+
     }
 
 }
@@ -1494,16 +1523,32 @@ body.page-template-map {
     // Tweak the schedule page
     body.page-template-schedule {
 
-        .btn.go-to-current-event {
-            width: auto;
-            float: right;
-            width: auto;
-            //position: absolute;
-            //right: 30px;
-            //top: 0;
-            margin: -20px 0 15px 20px;
+        .schedule-main-buttons-wrapper {
+            margin: -10px 0 15px 0;
             font-size: 16px;
             line-height: 1.7;
+            overflow: auto;
+
+            .btn {
+                margin: 0 !important;
+
+                &.go-to-current-event {
+                    width: auto;
+                    float: right;
+                    margin-left: 20px !important;
+                }
+
+            }
+
+            &.has-go-to-event {
+
+                .btn.conference-eval {
+                    width: auto;
+                    float: left;
+                }
+
+            }
+
         }
 
     }

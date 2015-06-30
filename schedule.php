@@ -10,8 +10,10 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
     // What time is it?
     $current_time = new DateTime( 'now', new DateTimeZone( 'America/Chicago' ) );
 
-    // Print "go to current event" button
-    ?><a href="#" class="btn btn-primary go-to-current-event">Go To Current Event</a><?php
+    ?><div class="schedule-main-buttons-wrapper">
+        <a class="conference-eval btn btn-primary btn-block" href="https://www.surveymonkey.com/r/26WHCFR">Submit conference feedback</a>
+        <a href="#" class="btn btn-primary go-to-current-event">Go To Current Event</a>
+    </div><?php
 
     foreach ( $schedule_data as $day_key => $day ) {
 

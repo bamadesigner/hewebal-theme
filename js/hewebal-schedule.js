@@ -4,8 +4,10 @@ jQuery(document).ready(function($) {
 	var $go_to_current_event = jQuery( '.go-to-current-event' ).hide();
 
 	// If current events, then show button
-	if ( jQuery( '.schedule-row.current' ).length >= 1 )
+	if ( jQuery( '.schedule-row.current' ).length >= 1 ) {
 		$go_to_current_event.show().css({'display':'block'});
+		$go_to_current_event.parent( '.schedule-main-buttons-wrapper' ).addClass( 'has-go-to-event' );
+	}
 
 	// If the button is clicked...
 	$go_to_current_event.on( 'click', function( $event ) {
