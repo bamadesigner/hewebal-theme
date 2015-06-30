@@ -64,6 +64,14 @@ add_action( 'wp_enqueue_scripts', function() {
 
 });
 
+//! Tweak the upload file size limit
+add_filter( 'upload_size_limit', function( $size_limit, $u_bytes, $p_bytes ) {
+
+    // Upload bigger files - 200 MB
+    return 209715200;
+
+});
+
 //! Hide Query Monitor
 add_filter( 'qm/process', function( $show_qm, $is_admin_bar_showing ) {
     return $is_admin_bar_showing;
