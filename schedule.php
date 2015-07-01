@@ -21,12 +21,12 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
         $day_date = new DateTime( $day_key, new DateTimeZone( 'America/Chicago' ) );
 
         // Has this date passed?
-        $day_has_passed = $day_date->format( 'j' ) < $current_time->format( 'j' );
+        //$day_has_passed = $day_date->format( 'j' ) < $current_time->format( 'j' );
 
         // Wrap in collapsible block
-        if ( $day_has_passed ) {
+        /*if ( $day_has_passed ) {
             echo '<div class="collapsible-schedule-block">';
-        }
+        }*/
 
         ?><h2 class="schedule-header"><?php echo $day_date->format( 'l, F j' ); ?></h2>
         <div class="schedule-table"><?php
@@ -259,9 +259,9 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
         ?></div><?php
 
         // Wrap in collapsible block
-        if ( $day_has_passed ) {
+        /*if ( $day_has_passed ) {
             echo '</div>';
-        }
+        }*/
 
     }
 
