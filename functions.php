@@ -306,7 +306,7 @@ function get_hewebal_schedule_data( $schedule_post_id = 0 ) {
 add_action( "save_post_schedule", function( $post_ID, $post, $update ) {
 
     delete_transient( 'hewebal_schedule_data' );
-    delete_transient( "hewebal_schedule_data_{$post_ID}" );
+    delete_transient( "hewebal_schedule_data_item_{$post_ID}" );
 
 });
 
