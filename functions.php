@@ -12,11 +12,7 @@ register_nav_menus( array(
 // Register Custom Navigation Walker
 get_template_part( 'includes/wp-bootstrap-navwalker' );
 
-//! @TODO Add image sizes
-/*if ( function_exists( 'add_image_size' ) ) {
-    add_image_size( '', 1005, 390, true );
-}*/
-
+// Add favicons
 add_action( 'wp_head', 'hewebal_add_favicons' );
 add_action( 'admin_head', 'hewebal_add_favicons' );
 add_action( 'login_head', 'hewebal_add_favicons' );
@@ -72,7 +68,7 @@ add_filter( 'upload_size_limit', function( $size_limit, $u_bytes, $p_bytes ) {
 
 });
 
-//! Hide Query Monitor
+//! Hide Query Monitor if admin bar isn't showing
 add_filter( 'qm/process', function( $show_qm, $is_admin_bar_showing ) {
     return $is_admin_bar_showing;
 });
