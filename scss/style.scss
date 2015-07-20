@@ -79,10 +79,10 @@ $event_types_with_bg: ('keynote' rgba($heweb-red, 0.08)) ('food' rgba($brand-suc
 }
 
 // Import our "overwrite Bootstrap" variables
-@import "../../../bootstrap/scss/bootstrap/_variables";
+@import "bootstrap/_variables";
 
 // Import Bootstrap
-@import "../../../bootstrap/scss/_bootstrap";
+@import "_bootstrap";
 
 html{
     height: 100%;
