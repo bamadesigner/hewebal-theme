@@ -76,14 +76,14 @@ $end_time = ! empty( $item_data->event_date ) && ! empty( $item_data->event_end_
                     }
 
                     // Show the feedback button if 30 minutes after start
-                    if ( ! empty( $item_data->session_feedback_url ) ) {
+                    /*if ( ! empty( $item_data->session_feedback_url ) ) {
 
                         // Print feedback URL if event has been going on at least 30 minutes
                         if ( ( $current_time->getTimestamp() - $start_time->getTimestamp() ) >= 1800 ) {
                             ?><a class="btn btn-success btn-block feedback-button" href="<?php echo $item_data->session_feedback_url; ?>" target="_blank">Give Feedback</a><?php
                         }
 
-                    }
+                    }*/
 
                 ?></div>
             </div><?php

@@ -4,7 +4,7 @@ get_header();
 
 ?><h1 class="welcome">Welcome to the 2015 HighEdWeb Alabama Regional Conference!</h1>
 
-<a class="conference-eval btn btn-primary btn-block" href="https://www.surveymonkey.com/r/26WHCFR">Submit conference feedback</a>
+<?php /*<a class="conference-eval btn btn-primary btn-block" href="https://www.surveymonkey.com/r/26WHCFR">Submit conference feedback</a>*/ ?>
 
 <div class="row">
     <div class="col-md-8">

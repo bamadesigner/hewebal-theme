@@ -11,7 +11,7 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
     $current_time = new DateTime( 'now', new DateTimeZone( 'America/Chicago' ) );
 
     ?><div class="schedule-main-buttons-wrapper">
-        <a class="conference-eval btn btn-primary btn-block" href="https://www.surveymonkey.com/r/26WHCFR">Submit conference feedback</a>
+        <?php /*<a class="conference-eval btn btn-primary btn-block" href="https://www.surveymonkey.com/r/26WHCFR">Submit conference feedback</a>*/ ?>
         <a href="#" class="btn btn-primary go-to-current-event">Go To Current Event</a>
     </div><?php
 
@@ -225,7 +225,7 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
                                        }
 
                                         // Show the feedback button if 30 minutes after start
-                                        if ( ! empty( $event->session_feedback_url ) ) {
+                                        /*if ( ! empty( $event->session_feedback_url ) ) {
 
                                             switch ( $event_type ) {
 
@@ -241,7 +241,7 @@ if ( $schedule_data = get_hewebal_schedule_data() ) {
 
                                             }
 
-                                        }
+                                        }*/
 
                                     ?></div>
                                 </div><?php
