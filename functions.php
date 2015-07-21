@@ -1,5 +1,15 @@
 <?php
 
+// Only need admin functionality in the admin
+if ( is_admin() ) {
+    get_template_part( 'includes/admin' );
+}
+
+// Only need custom Boostrap nav walker on the front end
+if ( ! is_admin() ) {
+    get_template_part( 'includes/wp-bootstrap-navwalker' );
+}
+
 // Enable featured images
 add_theme_support( 'post-thumbnails' );
 
@@ -8,9 +18,6 @@ register_nav_menus( array(
     'banner'    => 'Banner Menu',
     'main'      => 'Main Menu',
 ));
-
-// Register Custom Navigation Walker
-get_template_part( 'includes/wp-bootstrap-navwalker' );
 
 // Add favicons
 add_action( 'wp_head', 'hewebal_add_favicons' );
