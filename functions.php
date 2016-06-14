@@ -48,7 +48,7 @@ add_action( 'wp_enqueue_scripts', function() {
     wp_register_style( 'hewebal-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' );
 
     // Enqueue our base stylesheet
-    wp_enqueue_style( 'hewebal', $theme_dir . '/css/style.css', array( 'hewebal-fonts' ), NULL );
+    wp_enqueue_style( 'hewebal', $theme_dir . '/css/style.min.css', array( 'hewebal-fonts' ), NULL );
     
     // Modernizr JS - goes in header
     wp_enqueue_script( 'modernizr', 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js' );
@@ -58,11 +58,11 @@ add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_script( 'bootstrap-modal', $theme_dir . '/js/bootstrap/modal.js', array( 'jquery' ), NULL, true );
 
     // Enqueue OUR base JS
-    wp_enqueue_script( 'hewebal', $theme_dir . '/js/hewebal.js', array( 'jquery', 'modernizr' ), NULL, true );
+    wp_enqueue_script( 'hewebal', $theme_dir . '/js/hewebal.min.js', array( 'jquery', 'modernizr' ), NULL, true );
 
     // Enqueue the schedule script on the schedule page
     if ( is_page_template( 'schedule.php' ) ) {
-        wp_enqueue_script( 'hewebal-schedule', $theme_dir . '/js/hewebal-schedule.js', array( 'jquery' ), NULL, true );
+        wp_enqueue_script( 'hewebal-schedule', $theme_dir . '/js/hewebal-schedule.min.js', array( 'jquery' ), NULL, true );
     }
 
 });
