@@ -11,7 +11,7 @@ get_header();
 
         <h2>About the Conference</h2>
         <p>HighEdWeb Alabama is a regional conference of the <a href="http://www.highedweb.org/">The Higher Education Web Professionals Association</a> that is designed to bring together higher education professionals involved in all aspects of web communications - from programmers, designers, and system admins to content strategists, marketers, social media managers, and news and public relations specialists - to share knowledge, encourage best practices, and move our web communications to the next level.</p>
-		<a class="btn btn-default btn-block" href="https://hewebal.com/about/">Learn more about HighEdWeb Alabama</a>
+		<a class="btn btn-default btn-block" href="<?php echo get_bloginfo( 'url' ); ?>/about/">Learn more about HighEdWeb Alabama</a>
 
         <h2>Become A HighEdWeb Member</h2>
         <p>Members are the strength of our organization and, as part of membership in the <a href="http://highedweb.org/">HighEdWeb Association</a>, members have access to exclusive content and a growing community. Members receive access to exclusive content within the members-only website, including keynote videos from <a href="http://2015.highedweb.org/">the Annual Conference</a>, discounted registration for events such as the HighEdWeb Annual Conference, and advance notifications about special events, conferences, development opportunities and more.</p>

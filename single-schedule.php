@@ -7,7 +7,7 @@ $item_data = get_hewebal_schedule_data( $post->ID );
 
 // We don't need a page for "other"
 if ( in_array( $item_data->event_type, array( 'Auditorium', 'Food', 'Other' ) ) ) {
-    wp_redirect( 'https://hewebal.com/schedule/' );
+    wp_redirect( get_bloginfo( 'url' ) . '/schedule/' );
     exit;
 }
 

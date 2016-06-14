@@ -39,7 +39,7 @@
                 <li>&copy; <?php echo date( 'Y' ); ?> <a href="http://www.highedweb.org/">HighEdWeb Professionals Association</a></li>
 	            <li><a href="http://2015.highedweb.org/">2015 Annual Conference</a></li>
 	            <li><a href="http://www.highedweb.org/about/anti-harassment-policy/">Code of Conduct</a></li>
-                <li><a href="https://hewebal.com/contact/">Contact Us</a></li>
+                <li><a href="<?php echo get_bloginfo( 'url' ); ?>/contact/">Contact Us</a></li>
             </ul>
 
         </div>

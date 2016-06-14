@@ -24,7 +24,7 @@ if ( have_posts() ) :
 	        </div>
 		    <div class="row">
 			    <div class="col-md-12">
-				    <div class="hewebal-contact-map">Check out the <a href="https://hewebal.com/map/">HighEdWeb Alabama map</a> to find venues plus local food and fun!</div>
+				    <div class="hewebal-contact-map">Check out the <a href="<?php echo get_bloginfo( 'url' ); ?>/map/">HighEdWeb Alabama map</a> to find venues plus local food and fun!</div>
 			    </div>
 		    </div>
         </div><?php
